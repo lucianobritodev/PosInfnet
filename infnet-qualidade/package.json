@@ -1,0 +1,30 @@
+{
+  "name": "infnet-qualidade",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "test": "cypress run",
+    "cypress": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/magnorion/infnet-qualidade.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/magnorion/infnet-qualidade/issues"
+  },
+  "homepage": "https://github.com/magnorion/infnet-qualidade#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "selenium-webdriver": "^4.4.0"
+  },
+  "devDependencies": {
+    "cypress": "^10.8.0"
+  }
+}
