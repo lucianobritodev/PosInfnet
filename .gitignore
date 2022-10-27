@@ -1,16 +1,18 @@
 # Root
-.metadata
 RemoteSystemsTempFiles
-.env
-
-# Eclipse/STS
-target
-.settings
-.classpath
-.project
-
-# Intellij Idea
+.metadata
+.vscode
 .idea
 
+# Eclipse/STS
+./**/target
+./**/.settings
+./**/.classpath
+./**/.project
+
+# Intellij Idea
+./**/.idea
+
 # VS Code
-.vscode
+./**/.vscode
+./**/*.env
