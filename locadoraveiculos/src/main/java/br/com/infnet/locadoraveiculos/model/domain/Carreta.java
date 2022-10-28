@@ -7,6 +7,7 @@ public class Carreta extends Veiculo {
 	public Carreta() {
 	}
 	
+	
 	public int getCapacidadeReboque() {
 		return capacidadeReboque;
 	}
@@ -17,6 +18,6 @@ public class Carreta extends Veiculo {
 
 	@Override
 	public String toString() {
-		return "Carreta:" + capacidadeReboque+";";
+		return capacidadeReboque + ";" + super.toString();
 	}
 }
