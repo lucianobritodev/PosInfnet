@@ -12,7 +12,7 @@ public class CarretaTeste implements ApplicationRunner{
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		System.out.println("## Reserva de Carreta ##");
+		System.out.println("## Carreta ##");
 		
 		Carreta c1 = new Carreta();
 		c1.setCapacidadeReboque(30000);

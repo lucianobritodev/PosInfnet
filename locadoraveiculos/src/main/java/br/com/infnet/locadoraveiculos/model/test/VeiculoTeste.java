@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import br.com.infnet.locadoraveiculos.model.domain.Carreta;
 import br.com.infnet.locadoraveiculos.model.domain.CarroPasseio;
 import br.com.infnet.locadoraveiculos.model.domain.Trator;
-import br.com.infnet.locadoraveiculos.model.domain.Veiculo;
 import br.com.infnet.locadoraveiculos.model.domain.enuns.TipoMotor;
 import br.com.infnet.locadoraveiculos.model.domain.enuns.TipoTrator;
 
@@ -16,7 +15,7 @@ public class VeiculoTeste implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		System.out.println("## Reserva de Veículos ##");
+		System.out.println("## Veículos ##");
 		
 		Trator t1 = new Trator();
 		t1.setCodigo(1);

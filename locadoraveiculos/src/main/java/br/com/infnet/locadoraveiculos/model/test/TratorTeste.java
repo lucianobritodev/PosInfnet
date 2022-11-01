@@ -13,7 +13,7 @@ public class TratorTeste implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		System.out.println("## Reserva de Trator ##");
+		System.out.println("## Trator ##");
 		
 		Trator t1 = new Trator();
 		t1.setCodigo(1);

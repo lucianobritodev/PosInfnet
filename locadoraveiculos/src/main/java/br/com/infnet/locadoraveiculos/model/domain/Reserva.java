@@ -15,15 +15,13 @@ public class Reserva {
 	private Cliente cliente;
 	private List<Veiculo> veiculos = new ArrayList<>();
 	
-	public Reserva() { }
+	public Reserva() {
+		dataReserva = LocalDateTime.now();
+	}
 	
-	public Reserva(StatusReserva status, String descricao, LocalDateTime dataReserva,
-			Cliente cliente, Veiculo veiculo) {
-		this.status = status;
-		this.descricao = descricao;
-		this.dataReserva = dataReserva;
+	public Reserva(Cliente cliente) {
 		this.cliente = cliente;
-		this.veiculos.add(veiculo);
+		dataReserva = LocalDateTime.now();
 	}
 
 	public StatusReserva getStatus() {
@@ -41,29 +39,17 @@ public class Reserva {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
-	public LocalDateTime getDataReserva() {
-		return dataReserva;
-	}
-	
-	public void setDataReserva(LocalDateTime dataReserva) {
-		this.dataReserva = dataReserva;
-	}
-	
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
 
 	public List<Veiculo> getVeiculos() {
 		return veiculos;
 	}
+	
+	public void setVeiculos(List<Veiculo> veiculos) {
+		this.veiculos = veiculos;
+	}
 
 	@Override
 	public String toString() {
-		return status + ";" + descricao + ";" + dataReserva + ";";
+		return status + ";" + descricao + ";" + dataReserva + ";" + cliente + veiculos;
 	}
 }

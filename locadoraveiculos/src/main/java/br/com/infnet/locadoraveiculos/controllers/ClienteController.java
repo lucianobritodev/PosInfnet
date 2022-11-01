@@ -2,17 +2,19 @@ package br.com.infnet.locadoraveiculos.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class AppController {
+@RequestMapping("/cliente")
+public class ClienteController {
 
-	@GetMapping("/")
+	@GetMapping("/listar")
 	public String telaRoot() {
-		return "home/home";
+		return "cliente/listar";
 	}
 	
-	@GetMapping("/home")
+	@GetMapping("/")
 	public String telaHome() {
-		return "redirect:/";
+		return "redirect:/cliente/listar";
 	}
 }

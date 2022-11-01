@@ -9,16 +9,7 @@ public abstract class Veiculo {
 	private String cor;
 	private TipoMotor tipoMotor;
 	
-	private Reserva reserva;
-	
 	public Veiculo() {}
-	
-	public Veiculo(float valor, int codigo, String cor, TipoMotor tipoMotor) {
-		this.valor = valor;
-		this.codigo = codigo;
-		this.cor = cor;
-		this.tipoMotor = tipoMotor;
-	}
 
 	public float getValor() {
 		return valor;
@@ -52,13 +43,6 @@ public abstract class Veiculo {
 		this.tipoMotor = tipoMotor;
 	}
 	
-	public Reserva getReserva() {
-		return reserva;
-	}
-
-	public void setReserva(Reserva reserva) {
-		this.reserva = reserva;
-	}
 
 	@Override
 	public String toString() {

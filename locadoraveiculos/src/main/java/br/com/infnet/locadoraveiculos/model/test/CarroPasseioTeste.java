@@ -12,7 +12,7 @@ public class CarroPasseioTeste implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		System.out.println("## Reserva de Carro de Passeio ##");
+		System.out.println("## Carro de Passeio ##");
 		
 		CarroPasseio cp1 = new CarroPasseio();
 		cp1.setAssentos(5);
