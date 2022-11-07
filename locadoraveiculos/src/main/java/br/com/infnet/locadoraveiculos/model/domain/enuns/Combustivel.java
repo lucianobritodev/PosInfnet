@@ -1,6 +1,6 @@
 package br.com.infnet.locadoraveiculos.model.domain.enuns;
 
-public enum TipoMotor {
+public enum Combustivel {
 	
 	ELETRICO(1),
 	GASOLINA(2),
@@ -11,7 +11,7 @@ public enum TipoMotor {
 	
 	private int value;
 	
-	TipoMotor(int value) {
+	Combustivel(int value) {
 		this.value = value;
 	}
 	
@@ -20,7 +20,7 @@ public enum TipoMotor {
 	}
 	
 	public static Boolean contains(int value) {
-		for(TipoMotor tipo : TipoMotor.values()) {
+		for(Combustivel tipo : Combustivel.values()) {
 			if(tipo.value == value) {
 				return true;
 			}
@@ -28,8 +28,8 @@ public enum TipoMotor {
 		return false;
 	}
 	
-	public static TipoMotor getEnumByValue(int value) {
-		for(TipoMotor tipo : TipoMotor.values()) {
+	public static Combustivel getEnumByValue(int value) {
+		for(Combustivel tipo : Combustivel.values()) {
 			if(tipo.value == value) {
 				return tipo;
 			}

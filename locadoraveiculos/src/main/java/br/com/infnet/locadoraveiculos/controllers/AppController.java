@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class AppController {
 
 	@GetMapping("/")
-	public String telaRoot() {
-		return "home/home";
+	public String telaLista() {
+		return "home";
 	}
 	
 	@GetMapping("/home")
-	public String telaHome() {
+	public String redirectTelaLista() {
 		return "redirect:/";
 	}
 }

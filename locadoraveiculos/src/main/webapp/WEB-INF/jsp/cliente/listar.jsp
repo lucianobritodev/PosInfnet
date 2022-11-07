@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" 	uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -13,8 +15,28 @@
 	
 	<div class="container">
 		<h1>Cliente Listar</h1>
-	
-	
+		<div class="row">
+			<table class="table table-hover">
+				<thead>
+					<tr>			
+						<th>#</th>
+						<th>Nome</th>
+						<th>CPF</th>
+						<th>Email</th>
+					</tr>
+				</thead>
+				<tbody id="lista">
+					<c:forEach items="${ listagem }" var="cliente"  varStatus="i">
+						<tr>
+							<th scope="row">${ i.index + 1 }</th>
+							<td>${ cliente.nome }</td>
+							<td>${ cliente.cpf }</td>
+							<td>${ cliente.email }</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 	</div>
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>

@@ -11,8 +11,8 @@ import br.com.infnet.locadoraveiculos.model.domain.CarroPasseio;
 import br.com.infnet.locadoraveiculos.model.domain.Cliente;
 import br.com.infnet.locadoraveiculos.model.domain.Reserva;
 import br.com.infnet.locadoraveiculos.model.domain.Trator;
+import br.com.infnet.locadoraveiculos.model.domain.enuns.Combustivel;
 import br.com.infnet.locadoraveiculos.model.domain.enuns.StatusReserva;
-import br.com.infnet.locadoraveiculos.model.domain.enuns.TipoMotor;
 import br.com.infnet.locadoraveiculos.model.domain.enuns.TipoTrator;
 
 @Component
@@ -38,26 +38,32 @@ public class ReservaTeste implements ApplicationRunner {
 		c3.setNome("João Pedro");
 		
 		Carreta v1 = new Carreta();
+		v1.setNome("Volvo");
 		v1.setCapacidadeReboque(30000);
 		v1.setCodigo(1);
 		v1.setCor("Amarelo");
-		v1.setTipoMotor(TipoMotor.DIESEL);
+		v1.setCombustivel(Combustivel.DIESEL);
 		v1.setValor(300.0f);
+		v1.setMotor("750 cv");
 		
-		CarroPasseio v2 = new CarroPasseio();
-		v2.setAssentos(5);
+		Trator v2 = new Trator();
+		v2.setNome("Massey Ferguson");
 		v2.setCodigo(1);
-		v2.setCor("Vermelho");
-		v2.setTipoMotor(TipoMotor.FLEX);
-		v2.setValor(100);
+		v2.setCor("Verde");
+		v2.setCombustivel(Combustivel.DIESEL);
+		v2.setTipoTrator(TipoTrator.FLORESTAL);
+		v2.setValor(650);
+		v2.setMotor("390 cv");
 		
-		Trator v3 = new Trator();
+		CarroPasseio v3 = new CarroPasseio();
+		v3.setNome("Gol");
+		v3.setAssentos(5);
 		v3.setCodigo(1);
-		v3.setCor("Verde");
-		v3.setTipoMotor(TipoMotor.DIESEL);
-		v3.setTipoTrator(TipoTrator.FLORESTAL);
-		v3.setValor(650);
-		
+		v3.setCor("Vermelho");
+		v3.setCombustivel(Combustivel.FLEX);
+		v3.setValor(100);
+		v3.setMotor("77 cv");
+		v3.setDirecaoHidraulica(false);
 		
 		Reserva r1 = new Reserva(c2);
 		r1.setStatus(StatusReserva.FINALIZADO);
@@ -65,7 +71,7 @@ public class ReservaTeste implements ApplicationRunner {
 		r1.setVeiculos(Arrays.asList(v1, v2, v3));
 		System.out.println(r1);
 		
-		Reserva r2 = new Reserva();
+		Reserva r2 = new Reserva(c1);
 		r2.setStatus(StatusReserva.PENDENTE);
 		r2.setDescricao("Cliente virá na loja para passar o cartão");
 		r2.setVeiculos(Arrays.asList(v2, v3));

@@ -20,8 +20,8 @@ public class Reserva {
 	}
 	
 	public Reserva(Cliente cliente) {
+		this();
 		this.cliente = cliente;
-		dataReserva = LocalDateTime.now();
 	}
 
 	public StatusReserva getStatus() {
@@ -40,6 +40,18 @@ public class Reserva {
 		this.descricao = descricao;
 	}
 
+	public LocalDateTime getDataReserva() {
+		return dataReserva;
+	}
+
+	public void setDataReserva(LocalDateTime dataReserva) {
+		this.dataReserva = dataReserva;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
 	public List<Veiculo> getVeiculos() {
 		return veiculos;
 	}
@@ -50,6 +62,6 @@ public class Reserva {
 
 	@Override
 	public String toString() {
-		return status + ";" + descricao + ";" + dataReserva + ";" + cliente + veiculos;
+		return status + ";" + descricao + ";" + dataReserva + ";" + cliente + ";" + veiculos.size();
 	}
 }

@@ -18,13 +18,13 @@ import br.com.infnet.locadoraveiculos.model.domain.enuns.StatusReserva;
 public class ReservaController {
 
 	@GetMapping("/listar")
-	public String telaRoot(Model model) {
+	public String telaLista(Model model) {
 		model.addAttribute("listagem", getListReservaMock());
 		return "reserva/listar";
 	}
 	
 	@GetMapping("/")
-	public String telaHome() {
+	public String redirectTelaLista() {
 		return "redirect:/reserva/listar";
 	}
 	

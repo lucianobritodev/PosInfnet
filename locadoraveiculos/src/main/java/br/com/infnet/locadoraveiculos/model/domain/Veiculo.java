@@ -1,15 +1,25 @@
 package br.com.infnet.locadoraveiculos.model.domain;
 
-import br.com.infnet.locadoraveiculos.model.domain.enuns.TipoMotor;
+import br.com.infnet.locadoraveiculos.model.domain.enuns.Combustivel;
 
 public abstract class Veiculo {
 	
+	private String nome;
 	private float valor;
 	private int codigo;
 	private String cor;
-	private TipoMotor tipoMotor;
+	private Combustivel combustivel;
+	private String motor;
 	
 	public Veiculo() {}
+	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
 	public float getValor() {
 		return valor;
@@ -33,20 +43,27 @@ public abstract class Veiculo {
 	
 	public void setCor(String cor) {
 		this.cor = cor;
+	}	
+
+	public Combustivel getCombustivel() {
+		return combustivel;
 	}
-	
-	public TipoMotor getTipoMotor() {
-		return tipoMotor;
+
+	public void setCombustivel(Combustivel combustivel) {
+		this.combustivel = combustivel;
 	}
-	
-	public void setTipoMotor(TipoMotor tipoMotor) {
-		this.tipoMotor = tipoMotor;
+
+	public String getMotor() {
+		return motor;
 	}
-	
+
+	public void setMotor(String motor) {
+		this.motor = motor;
+	}
 
 	@Override
 	public String toString() {
-		return valor + ";" + codigo + ";" + cor + ";" + tipoMotor + ";";
+		return nome + ";" + valor + ";" + codigo + ";" + cor + ";" + combustivel + ";" + motor;
 	}
 
 }
