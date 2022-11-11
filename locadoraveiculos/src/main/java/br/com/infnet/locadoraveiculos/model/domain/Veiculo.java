@@ -4,15 +4,24 @@ import br.com.infnet.locadoraveiculos.model.domain.enuns.Combustivel;
 
 public abstract class Veiculo {
 	
+	private Long id;
 	private String nome;
 	private float valor;
-	private int codigo;
+	private int codigoChassi;
 	private String cor;
 	private Combustivel combustivel;
 	private String motor;
 	
 	public Veiculo() {}
 	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -29,12 +38,12 @@ public abstract class Veiculo {
 		this.valor = valor;
 	}
 	
-	public int getCodigo() {
-		return codigo;
+	public int getCodigoChassi() {
+		return codigoChassi;
 	}
 	
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
+	public void setCodigoChassi(int codigoChassi) {
+		this.codigoChassi = codigoChassi;
 	}
 	
 	public String getCor() {
@@ -63,7 +72,7 @@ public abstract class Veiculo {
 
 	@Override
 	public String toString() {
-		return nome + ";" + valor + ";" + codigo + ";" + cor + ";" + combustivel + ";" + motor;
+		return id + ";" + nome + ";" + valor + ";" + codigoChassi + ";" + cor + ";" + combustivel + ";" + motor;
 	}
 
 }

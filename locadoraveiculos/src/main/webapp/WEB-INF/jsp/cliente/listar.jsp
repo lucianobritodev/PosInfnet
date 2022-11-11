@@ -7,7 +7,7 @@
 	<meta charset="UTF-8">
 	<title>AppLocadoraVeiculo</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
-	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 <body>
 
@@ -19,19 +19,21 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>			
-						<th>#</th>
+						<th>ID</th>	
 						<th>Nome</th>
 						<th>CPF</th>
 						<th>Email</th>
+						<th>Excluir</th>
 					</tr>
 				</thead>
 				<tbody id="lista">
-					<c:forEach items="${ listagem }" var="cliente"  varStatus="i">
+					<c:forEach items="${ listagem }" var="cliente">
 						<tr>
-							<th scope="row">${ i.index + 1 }</th>
+							<th scope="row">${ cliente.id }</th>
 							<td>${ cliente.nome }</td>
 							<td>${ cliente.cpf }</td>
 							<td>${ cliente.email }</td>
+							<td><a href="/cliente/${ cliente.id }/excluir" class="btn btn-danger"><i class="bi bi-trash"></i></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

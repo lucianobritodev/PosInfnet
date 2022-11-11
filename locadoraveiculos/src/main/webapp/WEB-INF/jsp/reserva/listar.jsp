@@ -4,14 +4,10 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-<meta charset="UTF-8">
-<title>AppLocadoraVeiculo</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-	crossorigin="anonymous" />
-
+	<meta charset="UTF-8">
+	<title>AppLocadoraVeiculo</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 <body>
 
@@ -23,17 +19,18 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>#</th>
+						<th>ID</th>	
 						<th>Cliente</th>
 						<th>Data da Reserva</th>
 						<th>Descrição</th>
 						<th>Status</th>
+						<th>Excluir</th>
 					</tr>
 				</thead>
 				<tbody id="lista">
-					<c:forEach items="${ listagem }" var="reserva" varStatus="i">
+					<c:forEach items="${ listagem }" var="reserva">
 						<tr>
-							<th scope="row">${ i.index + 1 }</th>
+							<th scope="row">${ reserva.id }</th>
 							<td>${ reserva.cliente.nome }</td>
 							<td>
 								<fmt:parseDate value="${ reserva.dataReserva }" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
@@ -41,6 +38,7 @@
 							</td>
 							<td>${ reserva.descricao }</td>
 							<td>${ reserva.status }</td>
+							<td><a href="/reserva/${ reserva.id }/excluir" class="btn btn-danger"><i class="bi bi-trash"></i></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

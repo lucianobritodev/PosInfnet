@@ -4,8 +4,10 @@ import java.util.Arrays;
 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import br.com.infnet.locadoraveiculos.controllers.ReservaController;
 import br.com.infnet.locadoraveiculos.model.domain.Carreta;
 import br.com.infnet.locadoraveiculos.model.domain.CarroPasseio;
 import br.com.infnet.locadoraveiculos.model.domain.Cliente;
@@ -15,6 +17,7 @@ import br.com.infnet.locadoraveiculos.model.domain.enuns.Combustivel;
 import br.com.infnet.locadoraveiculos.model.domain.enuns.StatusReserva;
 import br.com.infnet.locadoraveiculos.model.domain.enuns.TipoTrator;
 
+@Order(7)
 @Component
 public class ReservaTeste implements ApplicationRunner {
 
@@ -40,7 +43,7 @@ public class ReservaTeste implements ApplicationRunner {
 		Carreta v1 = new Carreta();
 		v1.setNome("Volvo");
 		v1.setCapacidadeReboque(30000);
-		v1.setCodigo(1);
+		v1.setCodigoChassi(69548851);
 		v1.setCor("Amarelo");
 		v1.setCombustivel(Combustivel.DIESEL);
 		v1.setValor(300.0f);
@@ -48,7 +51,7 @@ public class ReservaTeste implements ApplicationRunner {
 		
 		Trator v2 = new Trator();
 		v2.setNome("Massey Ferguson");
-		v2.setCodigo(1);
+		v2.setCodigoChassi(65845111);
 		v2.setCor("Verde");
 		v2.setCombustivel(Combustivel.DIESEL);
 		v2.setTipoTrator(TipoTrator.FLORESTAL);
@@ -58,7 +61,7 @@ public class ReservaTeste implements ApplicationRunner {
 		CarroPasseio v3 = new CarroPasseio();
 		v3.setNome("Gol");
 		v3.setAssentos(5);
-		v3.setCodigo(1);
+		v3.setCodigoChassi(198711325);
 		v3.setCor("Vermelho");
 		v3.setCombustivel(Combustivel.FLEX);
 		v3.setValor(100);
@@ -70,18 +73,22 @@ public class ReservaTeste implements ApplicationRunner {
 		r1.setDescricao("Cliente buscará o veículo a tarde");
 		r1.setVeiculos(Arrays.asList(v1, v2, v3));
 		System.out.println(r1);
+		ReservaController.incluir(r1);
 		
 		Reserva r2 = new Reserva(c1);
 		r2.setStatus(StatusReserva.PENDENTE);
 		r2.setDescricao("Cliente virá na loja para passar o cartão");
 		r2.setVeiculos(Arrays.asList(v2, v3));
 		System.out.println(r2);
+		ReservaController.incluir(r2);
 		
 		Reserva r3 = new Reserva(c3);
 		r3.setStatus(StatusReserva.RECUSADO);
 		r3.setDescricao("Cliente não possui limite no cartão");
 		r3.setVeiculos(Arrays.asList(v1));
 		System.out.println(r3);
+		ReservaController.incluir(r3);
+		
 	}
 
 }

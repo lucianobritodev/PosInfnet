@@ -7,7 +7,7 @@
 	<meta charset="UTF-8">
 	<title>AppLocadoraVeiculo</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
-	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 <body>
 
@@ -18,8 +18,9 @@
 		<div class="row">
 			<table class="table table-hover">
 				<thead>
-					<tr>			
-						<th>Código</th>
+					<tr>
+						<th>ID</th>	
+						<th>Chassi</th>
 						<th>Nome</th>
 						<th>Cor</th>
 						<th>Assentos</th>
@@ -27,12 +28,14 @@
 						<th>Motor</th>
 						<th>Direção</th>
 						<th>Valor</th>
+						<th>Excluir</th>
 					</tr>
 				</thead>
 				<tbody id="lista">
 					<c:forEach items="${ listagem }" var="carro">
 						<tr>
-							<th scope="row">${ carro.codigo }</th>
+							<th scope="row">${ carro.id }</th>
+							<td>${ carro.codigoChassi }</td>
 							<td>${ carro.nome }</td>
 							<td>${ carro.cor }</td>
 							<td>${ carro.assentos }</td>
@@ -42,6 +45,7 @@
 							<td>
 								<fmt:formatNumber type="number" minFractionDigits="2" value="${ carro.valor }" />	
 							</td>
+							<td><a href="/carro/${ carro.id }/excluir" class="btn btn-danger"><i class="bi bi-trash"></i></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

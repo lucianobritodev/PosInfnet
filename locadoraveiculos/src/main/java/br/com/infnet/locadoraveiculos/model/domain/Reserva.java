@@ -8,6 +8,7 @@ import br.com.infnet.locadoraveiculos.model.domain.enuns.StatusReserva;
 
 public class Reserva {
 
+	private Long id;
 	private StatusReserva status;
 	private String descricao;
 	private LocalDateTime dataReserva;
@@ -22,6 +23,14 @@ public class Reserva {
 	public Reserva(Cliente cliente) {
 		this();
 		this.cliente = cliente;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public StatusReserva getStatus() {
@@ -50,6 +59,10 @@ public class Reserva {
 
 	public Cliente getCliente() {
 		return cliente;
+	}
+	
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	public List<Veiculo> getVeiculos() {

@@ -2,11 +2,20 @@ package br.com.infnet.locadoraveiculos.model.domain;
 
 public class Cliente {
 
+	private Long id;
 	private String nome;
 	private String cpf;
 	private String email;
 	
 	public Cliente() { }
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getNome() {
 		return nome;
