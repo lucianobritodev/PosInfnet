@@ -4,16 +4,27 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+
 import br.com.infnet.locadoraveiculos.model.domain.enuns.StatusReserva;
 
+@Entity
 public class Reserva {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private StatusReserva status;
 	private String descricao;
 	private LocalDateTime dataReserva;
 	
+	@Transient
 	private Cliente cliente;
+	@Transient
 	private List<Veiculo> veiculos = new ArrayList<>();
 	
 	public Reserva() {

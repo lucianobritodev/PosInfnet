@@ -1,54 +1,37 @@
 package br.com.infnet.locadoraveiculos.controllers;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
-import br.com.infnet.locadoraveiculos.model.domain.Veiculo;
+import br.com.infnet.locadoraveiculos.model.service.VeiculoService;
 
 @Controller
 @RequestMapping("/veiculo")
 public class VeiculoController {
 	
-	private static Map<Long, Veiculo> mapa = new HashMap<>();	
-	private static Long id = 1l;
+	@Autowired
+	private VeiculoService veiculoService;
 
-	public static void incluir(Veiculo veiculo) {
-		veiculo.setId(id++);
-		mapa.put(veiculo.getId(), veiculo);
-
-		System.out.println(">>> incluindo veiculo " + veiculo.getId());
-	}
-
-	public static void excluir(Long id) {
-		System.out.println(">>> excluindo veiculo " + id);
-		mapa.remove(id);
-	}
-
-	public static Collection<Veiculo> obterLista(){
-		return mapa.values();
-	}
-
-	@GetMapping("/listar")
-	public String telaLista(Model model) {
-		model.addAttribute("listagem", obterLista());
-		return "veiculo/listar";
-	}
-	
 	@GetMapping
 	public String redirectTelaLista() {
 		return "redirect:/veiculo/listar";
 	}
 	
+	@GetMapping("/listar")
+	public ModelAndView telaLista(Model model) {
+		model.addAttribute("listagem", veiculoService.obterTodos());
+		return new ModelAndView("/veiculo/listar");
+	}
+	
 	@GetMapping("/{id}/excluir")
-	public String exclusao(@PathVariable("id") Long id) {
-		excluir(id);
-		return "redirect:/veiculo/listar";
+	public ModelAndView excluir(@PathVariable("id") Long id, Model model) {
+		veiculoService.excluir(id);
+		model.addAttribute("msgSuccess", "Veiculo "+ id +" excluido com sucesso!");
+		return this.telaLista(model);
 	}
 }

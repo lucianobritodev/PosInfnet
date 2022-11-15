@@ -1,11 +1,14 @@
 package br.com.infnet.locadoraveiculos.model.domain;
 
-public class CarroPasseio extends Veiculo {
+import javax.persistence.Entity;
+
+@Entity
+public class Carro extends Veiculo {
 
 	private int assentos;
 	private boolean direcaoHidraulica;
 	
-	public CarroPasseio() { }
+	public Carro() { }
 
 	public int getAssentos() {
 		return assentos;

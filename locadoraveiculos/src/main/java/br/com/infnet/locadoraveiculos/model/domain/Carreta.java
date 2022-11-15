@@ -1,5 +1,8 @@
 package br.com.infnet.locadoraveiculos.model.domain;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Carreta extends Veiculo {
 	
 	private int capacidadeReboque;

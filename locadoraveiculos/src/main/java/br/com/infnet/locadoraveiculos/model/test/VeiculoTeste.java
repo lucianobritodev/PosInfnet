@@ -1,20 +1,24 @@
 package br.com.infnet.locadoraveiculos.model.test;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import br.com.infnet.locadoraveiculos.controllers.VeiculoController;
 import br.com.infnet.locadoraveiculos.model.domain.Carreta;
-import br.com.infnet.locadoraveiculos.model.domain.CarroPasseio;
+import br.com.infnet.locadoraveiculos.model.domain.Carro;
 import br.com.infnet.locadoraveiculos.model.domain.Trator;
 import br.com.infnet.locadoraveiculos.model.domain.enuns.Combustivel;
 import br.com.infnet.locadoraveiculos.model.domain.enuns.TipoTrator;
+import br.com.infnet.locadoraveiculos.model.service.VeiculoService;
 
 @Order(3)
 @Component
 public class VeiculoTeste implements ApplicationRunner {
+	
+	@Autowired
+	private VeiculoService veiculoService;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -29,7 +33,7 @@ public class VeiculoTeste implements ApplicationRunner {
 		v1.setValor(650);
 		v1.setMotor("390 cv");
 		System.out.println(v1);
-		VeiculoController.incluir(v1);
+		veiculoService.incluir(v1);
 		
 		Carreta v2 = new Carreta();
 		v2.setNome("Volvo");
@@ -40,9 +44,9 @@ public class VeiculoTeste implements ApplicationRunner {
 		v2.setValor(300.0f);
 		v2.setMotor("750 cv");
 		System.out.println(v2);
-		VeiculoController.incluir(v2);
+		veiculoService.incluir(v2);
 		
-		CarroPasseio v3 = new CarroPasseio();
+		Carro v3 = new Carro();
 		v3.setNome("Gol");
 		v3.setAssentos(5);
 		v3.setCodigoChassi(169775128);
@@ -52,7 +56,7 @@ public class VeiculoTeste implements ApplicationRunner {
 		v3.setMotor("77 cv");
 		v3.setDirecaoHidraulica(false);
 		System.out.println(v3);
-		VeiculoController.incluir(v3);
+		veiculoService.incluir(v3);
 		
 	}
 

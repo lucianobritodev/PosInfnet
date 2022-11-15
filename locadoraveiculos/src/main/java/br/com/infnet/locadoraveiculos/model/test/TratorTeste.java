@@ -1,18 +1,22 @@
 package br.com.infnet.locadoraveiculos.model.test;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import br.com.infnet.locadoraveiculos.controllers.TratorController;
 import br.com.infnet.locadoraveiculos.model.domain.Trator;
 import br.com.infnet.locadoraveiculos.model.domain.enuns.Combustivel;
 import br.com.infnet.locadoraveiculos.model.domain.enuns.TipoTrator;
+import br.com.infnet.locadoraveiculos.model.service.TratorService;
 
 @Order(6)
 @Component
 public class TratorTeste implements ApplicationRunner {
+	
+	@Autowired
+	private TratorService tratorService;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -27,7 +31,7 @@ public class TratorTeste implements ApplicationRunner {
 		t1.setValor(650);
 		t1.setMotor("390 cv");
 		System.out.println(t1);
-		TratorController.incluir(t1);
+		tratorService.incluir(t1);
 		
 		Trator t2 = new Trator();
 		t2.setNome("New Holland");
@@ -38,7 +42,7 @@ public class TratorTeste implements ApplicationRunner {
 		t2.setValor(980);
 		t2.setMotor("440 cv");
 		System.out.println(t2);
-		TratorController.incluir(t2);
+		tratorService.incluir(t2);
 		
 		Trator t3 = new Trator();
 		t3.setNome("John Deere");
@@ -49,7 +53,7 @@ public class TratorTeste implements ApplicationRunner {
 		t3.setValor(1300);
 		t3.setMotor("410 cv");
 		System.out.println(t3);
-		TratorController.incluir(t3);
+		tratorService.incluir(t3);
 		
 	}
 
