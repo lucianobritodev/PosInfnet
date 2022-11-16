@@ -19,7 +19,7 @@ public class CarroTeste implements ApplicationRunner {
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		System.out.println("## Carro de Passeio ##");
+		System.out.println("## Carro ##");
 		
 		Carro cp1 = new Carro();
 		cp1.setNome("Gol");

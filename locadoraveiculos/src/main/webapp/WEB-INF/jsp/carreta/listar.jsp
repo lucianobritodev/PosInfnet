@@ -7,7 +7,7 @@
 <html lang="pt">
 <head>
 	<meta charset="UTF-8">
-	<title>AppLocadoraVeiculo</title>
+	<title>Carretas</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
@@ -17,7 +17,12 @@
 	
 	<div class="container">
 		<tags:mensagem />
-		<h1>Carreta Listar</h1>
+		<h1 class="mt-4 mb-4">Carretas</h1>
+		<div class="row mb-4">
+			<div class="d-flex flex-row-reverse">			
+				<a class="btn btn-primary p-2" href="/carreta/cadastrar"><i class="bi bi-plus"></i> Incluir&nbsp;</a> 
+			</div>		
+		</div>
 		<div class="row">
 			<table class="table table-hover">
 				<thead>

@@ -1,8 +1,10 @@
 package br.com.infnet.locadoraveiculos.model.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "tb_carro")
 public class Carro extends Veiculo {
 
 	private int assentos;

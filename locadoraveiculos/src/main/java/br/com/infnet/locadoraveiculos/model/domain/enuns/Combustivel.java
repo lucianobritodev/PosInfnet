@@ -1,5 +1,8 @@
 package br.com.infnet.locadoraveiculos.model.domain.enuns;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum Combustivel {
 	
 	ELETRICO(1),
@@ -31,10 +34,19 @@ public enum Combustivel {
 	public static Combustivel getEnumByValue(int value) {
 		for(Combustivel tipo : Combustivel.values()) {
 			if(tipo.value == value) {
+				
 				return tipo;
 			}
 		}
 		return null;
+	}
+	
+	public List<String> getNames() {
+		List<String> stgs = new ArrayList<String>();
+		for(Combustivel tipo : Combustivel.values()) {
+			stgs.add(tipo.name());
+		}
+		return stgs;
 	}
 
 }

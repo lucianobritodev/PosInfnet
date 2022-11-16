@@ -6,12 +6,15 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 import br.com.infnet.locadoraveiculos.model.domain.enuns.Combustivel;
 
 @Entity
-@Table(name = "tbveiculo")
+@Table(name = "tb_veiculo")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Veiculo {
 	
 	@Id

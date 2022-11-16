@@ -7,7 +7,7 @@
 <html lang="pt">
 <head>
 	<meta charset="UTF-8">
-	<title>AppLocadoraVeiculo</title>
+	<title>Veículos</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
@@ -17,7 +17,7 @@
 	
 	<div class="container">
 		<tags:mensagem />
-		<h1>Veículo Listar</h1>
+		<h1>Veículos</h1>
 		<div class="row">
 			<table class="table table-hover">
 				<thead>
