@@ -10,14 +10,20 @@
 	<title>Reservas</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+	<link rel="shortcut icon" href="./../../favicon.ico">
 </head>
 <body>
 
-	<jsp:include page="../static/header.jsp" />
+	<jsp:include page="./../static/header.jsp" />
+	<tags:mensagem />
 
 	<div class="container">
-		<tags:mensagem />
-		<h1>Reservas</h1>
+		<h1 class="mt-4 mb-4">Reservas</h1>
+		<div class="row mb-4">
+			<div class="d-flex flex-row-reverse">			
+				<a class="btn btn-primary p-2" href="/reserva/cadastrar"><i class="bi bi-plus"></i> Incluir&nbsp;&nbsp;</a> 
+			</div>		
+		</div>
 		<div class="row">
 			<table class="table table-hover">
 				<thead>
@@ -25,9 +31,12 @@
 						<th>ID</th>	
 						<th>Cliente</th>
 						<th>Data da Reserva</th>
+						<th>Dias Reservados</th>
 						<th>Descrição</th>
 						<th>Status</th>
+						<th>Valor Total</th>
 						<th>Excluir</th>
+						<th>Editar</th>
 					</tr>
 				</thead>
 				<tbody id="lista">
@@ -37,20 +46,20 @@
 							<td>${ reserva.cliente.nome }</td>
 							<td>
 								<fmt:parseDate value="${ reserva.dataReserva }" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
-								<fmt:formatDate pattern="dd-MM-yyyy HH:mm:ss" value="${ parsedDateTime }" />	
+								<fmt:formatDate pattern="dd-MM-yyyy HH:mm" value="${ parsedDateTime }" />	
 							</td>
+							<td>${ reserva.diasReservados }</td>
 							<td>${ reserva.descricao }</td>
 							<td>${ reserva.status }</td>
+							<td>${ reserva.totalReserva }</td>
 							<td><a href="/reserva/${ reserva.id }/excluir" class="btn btn-danger"><i class="bi bi-trash"></i></a></td>
+							<td><a href="/reserva/${ reserva.id }/editar" class="btn btn-secondary"><i class="bi bi-pencil-square"></i></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
 	</div>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-		crossorigin="anonymous"></script>
+	<tags:scripts />
 </body>
 </html>

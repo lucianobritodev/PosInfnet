@@ -12,25 +12,44 @@
 </head>
 <body>
 	<jsp:include page="./static/header.jsp" />
-
-	<div class="container col-sm-4 col-offset-4 border border-secondary rounded p-4 mt-4 mb-4">
-		<tags:mensagem />
+	<tags:mensagem />
+	
+	<div class="container col-sm-4 col-offset-4 border border-secondary rounded mt-4 mb-4">
 		<h2 class="text-center mt-4">Login</h2>
 		
 		<form action="/login" method="post">
-		  <div class="form-group mt-4 mb-4">
-		    <label for="email">Email:</label>
-		    <input type="email" id="email" class="form-control" placeholder="Entre com o seu e-mail" name="email">
-		  </div>
-		  <div class="form-group mb-4">
-		    <label for="password">Senha:</label>
-		    <input type="password" id="password" class="form-control" placeholder="Entre com a sua senha" name="senha">
-		  </div>
-		  <div class="form-group text-center mt-4 mb-4">
-			<button type="submit" class="btn btn-primary col-sm-12">Entrar</button>
-		  </div>
+			<div class="form-group mb-4">
+			  <label for="email">Email:</label>
+			  <input type="email" id="email" class="form-control" placeholder="Entre com o seu e-mail" name="email">
+			</div>
+			<div class="form-group mb-4">
+				<label for="password">Senha:</label>
+				<input type="password" id="password" class="form-control" placeholder="Entre com a sua senha" name="senha">
+			</div>
+			
+		    <div class="row mb-4">
+				<div class="col d-flex justify-content-center">
+				  <div class="form-check">
+				    <input class="form-check-input" type="checkbox" value="" id="remember-password" />
+				    <label class="form-check-label" for="remember-password"> Relembre-me</label>
+				  </div>
+				</div>
+				
+				<div class="col d-flex justify-content-center">
+				    <a href="#!">Esqueceu a senha?</a>
+				</div>
+			</div>
+			
+			<div class="form-group text-center mb-4">
+				<button type="submit" class="btn btn-primary col-sm-8">Entrar</button>
+			</div>
+			
+			<div class="text-center mb-4">
+			  <p>Não sou usuário? <a href="/usuario/cadastrar">Cadastre-se</a></p>
+			</div>
 		</form>
 		
 	</div>
+	<tags:scripts />
 </body>
 </html>

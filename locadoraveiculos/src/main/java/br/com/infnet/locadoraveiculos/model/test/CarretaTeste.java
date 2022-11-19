@@ -30,7 +30,7 @@ public class CarretaTeste implements ApplicationRunner{
 		c1.setValor(300.0f);
 		c1.setMotor("750 cv");
 		System.out.println(c1);
-		carretaService.incluir(c1);
+		carretaService.salvar(c1);
 		
 		Carreta c2 = new Carreta();
 		c2.setNome("Scania");
@@ -41,7 +41,7 @@ public class CarretaTeste implements ApplicationRunner{
 		c2.setValor(700.0f);
 		c2.setMotor("830 cv");
 		System.out.println(c2);
-		carretaService.incluir(c2);
+		carretaService.salvar(c2);
 		
 		Carreta c3 = new Carreta();
 		c3.setNome("Iveco");
@@ -52,7 +52,7 @@ public class CarretaTeste implements ApplicationRunner{
 		c3.setValor(900.0f);
 		c3.setMotor("710 cv");
 		System.out.println(c3);
-		carretaService.incluir(c3);
+		carretaService.salvar(c3);
 		
 	}
 

@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.infnet.locadoraveiculos.model.domain.Carreta;
 import br.com.infnet.locadoraveiculos.model.repository.CarretaRepository;
-import br.com.infnet.locadoraveiculos.model.service.exception.IdentifierCanNotBeNullOrZeroException;
+import br.com.infnet.locadoraveiculos.model.service.exception.IdentifierCanNotBeEmptyNullOrZeroException;
 import br.com.infnet.locadoraveiculos.model.service.exception.ResourceNotFoundException;
 
 @Service
@@ -23,17 +23,17 @@ public class CarretaService {
 	}
 
 	@Transactional(readOnly = true)
-	public Carreta obterUm(final Long id) throws ResourceNotFoundException, IdentifierCanNotBeNullOrZeroException {
-		if(id == null || id == 0) throw new IdentifierCanNotBeNullOrZeroException("Identificador não pode ser zero ou nulo!");
+	public Carreta obterUm(final Long id) throws ResourceNotFoundException, IdentifierCanNotBeEmptyNullOrZeroException {
+		if(id == null || id == 0) throw new IdentifierCanNotBeEmptyNullOrZeroException("Identificador não pode ser zero ou nulo!");
 		return carretaRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Carreta com identificador " + id + " não encontrado!"));
 	}
 	
 	@Transactional
-	public Carreta incluir(Carreta carreta) {
+	public Carreta salvar(Carreta carreta) {
 		try {
 			carreta = carretaRepository.saveAndFlush(carreta);
-		} catch (ResourceNotFoundException | IdentifierCanNotBeNullOrZeroException e) {
+		} catch (ResourceNotFoundException | IdentifierCanNotBeEmptyNullOrZeroException e) {
 			e.printStackTrace();
 		}
 		return carreta;
@@ -46,7 +46,7 @@ public class CarretaService {
 			this.obterUm(id);
 			carreta.setId(id);
 			carreta = carretaRepository.saveAndFlush(carreta);
-		} catch (ResourceNotFoundException | IdentifierCanNotBeNullOrZeroException e) {
+		} catch (ResourceNotFoundException | IdentifierCanNotBeEmptyNullOrZeroException e) {
 			e.printStackTrace();
 		}
 		
@@ -58,7 +58,7 @@ public class CarretaService {
 		try {			
 			this.obterUm(id);
 			carretaRepository.deleteById(id);
-		} catch (ResourceNotFoundException | IdentifierCanNotBeNullOrZeroException e) {
+		} catch (ResourceNotFoundException | IdentifierCanNotBeEmptyNullOrZeroException e) {
 			e.printStackTrace();
 		}
 	}

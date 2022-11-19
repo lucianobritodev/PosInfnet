@@ -28,7 +28,7 @@ public class AppController {
 	}
 	
 	@GetMapping(value = "/login")
-	public String telaLogin() {
+	public String telaLogin(Model model) {
 		return "login";
 	}
 
@@ -40,8 +40,9 @@ public class AppController {
 			model.addAttribute("user", usuario);
 			return "redirect:/home";
 		}
-		model.addAttribute("msgError", "Usuario não cadastrado");
-		return "redirect:/login";
+		
+		model.addAttribute("msgWarning", "Usuario não encontrado!");
+		return this.telaLogin(model);
 	}
 
 	@GetMapping("/home")

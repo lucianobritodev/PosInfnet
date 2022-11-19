@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.infnet.locadoraveiculos.model.domain.Carro;
 import br.com.infnet.locadoraveiculos.model.repository.CarroRepository;
-import br.com.infnet.locadoraveiculos.model.service.exception.IdentifierCanNotBeNullOrZeroException;
+import br.com.infnet.locadoraveiculos.model.service.exception.IdentifierCanNotBeEmptyNullOrZeroException;
 import br.com.infnet.locadoraveiculos.model.service.exception.ResourceNotFoundException;
 
 @Service
@@ -23,17 +23,17 @@ public class CarroService {
 	}
 
 	@Transactional(readOnly = true)
-	public Carro obterUm(final Long id) throws ResourceNotFoundException, IdentifierCanNotBeNullOrZeroException {
-		if(id == null || id == 0) throw new IdentifierCanNotBeNullOrZeroException("Identificador não pode ser zero ou nulo!");
+	public Carro obterUm(final Long id) throws ResourceNotFoundException, IdentifierCanNotBeEmptyNullOrZeroException {
+		if(id == null || id == 0) throw new IdentifierCanNotBeEmptyNullOrZeroException("Identificador não pode ser zero ou nulo!");
 		return carroRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Carro com identificador " + id + " não encontrado!"));
 	}
 	
 	@Transactional
-	public Carro incluir(Carro carro) {
+	public Carro salvar(Carro carro) {
 		try {
 			carro = carroRepository.saveAndFlush(carro);
-		} catch (ResourceNotFoundException | IdentifierCanNotBeNullOrZeroException e) {
+		} catch (ResourceNotFoundException | IdentifierCanNotBeEmptyNullOrZeroException e) {
 			e.printStackTrace();
 		}
 		return carro;
@@ -46,7 +46,7 @@ public class CarroService {
 			this.obterUm(id);
 			carro.setId(id);
 			carro = carroRepository.saveAndFlush(carro);
-		} catch (ResourceNotFoundException | IdentifierCanNotBeNullOrZeroException e) {
+		} catch (ResourceNotFoundException | IdentifierCanNotBeEmptyNullOrZeroException e) {
 			e.printStackTrace();
 		}
 		
@@ -58,7 +58,7 @@ public class CarroService {
 		try {			
 			this.obterUm(id);
 			carroRepository.deleteById(id);
-		} catch (ResourceNotFoundException | IdentifierCanNotBeNullOrZeroException e) {
+		} catch (ResourceNotFoundException | IdentifierCanNotBeEmptyNullOrZeroException e) {
 			e.printStackTrace();
 		}
 	}

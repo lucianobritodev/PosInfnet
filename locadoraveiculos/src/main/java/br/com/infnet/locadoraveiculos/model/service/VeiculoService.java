@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.infnet.locadoraveiculos.model.domain.Veiculo;
 import br.com.infnet.locadoraveiculos.model.repository.VeiculoRepository;
-import br.com.infnet.locadoraveiculos.model.service.exception.IdentifierCanNotBeNullOrZeroException;
+import br.com.infnet.locadoraveiculos.model.service.exception.IdentifierCanNotBeEmptyNullOrZeroException;
 import br.com.infnet.locadoraveiculos.model.service.exception.ResourceNotFoundException;
 
 @Service
@@ -23,8 +23,8 @@ public class VeiculoService {
 	}
 
 	@Transactional(readOnly = true)
-	public Veiculo obterUm(final Long id) throws ResourceNotFoundException, IdentifierCanNotBeNullOrZeroException {
-		if(id == null || id == 0) throw new IdentifierCanNotBeNullOrZeroException("Identificador não pode ser zero ou nulo!");
+	public Veiculo obterUm(final Long id) throws ResourceNotFoundException, IdentifierCanNotBeEmptyNullOrZeroException {
+		if(id == null || id == 0) throw new IdentifierCanNotBeEmptyNullOrZeroException("Identificador não pode ser zero ou nulo!");
 		return veiculoRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Veiculo com identificador " + id + " não encontrado!"));
 	}
@@ -33,7 +33,7 @@ public class VeiculoService {
 	public Veiculo incluir(Veiculo veiculo) {
 		try {
 			veiculo = veiculoRepository.saveAndFlush(veiculo);
-		} catch (ResourceNotFoundException | IdentifierCanNotBeNullOrZeroException e) {
+		} catch (ResourceNotFoundException | IdentifierCanNotBeEmptyNullOrZeroException e) {
 			e.printStackTrace();
 		}
 		return veiculo;
@@ -46,7 +46,7 @@ public class VeiculoService {
 			this.obterUm(id);
 			veiculo.setId(id);
 			veiculo = veiculoRepository.saveAndFlush(veiculo);
-		} catch (ResourceNotFoundException | IdentifierCanNotBeNullOrZeroException e) {
+		} catch (ResourceNotFoundException | IdentifierCanNotBeEmptyNullOrZeroException e) {
 			e.printStackTrace();
 		}
 		
@@ -58,7 +58,7 @@ public class VeiculoService {
 		try {			
 			this.obterUm(id);
 			veiculoRepository.deleteById(id);
-		} catch (ResourceNotFoundException | IdentifierCanNotBeNullOrZeroException e) {
+		} catch (ResourceNotFoundException | IdentifierCanNotBeEmptyNullOrZeroException e) {
 			e.printStackTrace();
 		}
 	}

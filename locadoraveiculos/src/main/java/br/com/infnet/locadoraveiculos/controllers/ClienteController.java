@@ -41,21 +41,20 @@ public class ClienteController {
 	
 	@GetMapping(value = "/{id}/editar")
 	public ModelAndView editar(Model model, @PathVariable("id") Long id) {
-		model.addAttribute("cliente", clienteService.obterUm(id));
+		model.addAttribute("cliente", clienteService.obterUmId(id));
 		return new ModelAndView("/cliente/cadastrar");
 	}
 
-	// @SessionAttribute("user") Usuario usuario
-	@PostMapping(value = "/incluir")
-	public ModelAndView incluir(Model model, @ModelAttribute("cliente") Cliente cliente, @SessionAttribute("user") Usuario usuario) {
+	@PostMapping(value = "/salvar")
+	public ModelAndView salvar(Model model, @ModelAttribute("cliente") Cliente cliente, @SessionAttribute("user") Usuario usuario) {
 		boolean incluir = cliente.getId() == null ? true : false;
-		//cliente.setUsuario(usuario);
-		cliente = clienteService.incluir(cliente);
+		cliente.setUsuario(usuario);
+		cliente = clienteService.salvar(cliente);
 		
 		if(incluir) {			
-			model.addAttribute("msgSuccess", "Usuario "+ cliente.getId() +" incluido com sucesso!");
+			model.addAttribute("msgSuccess", "Cliente "+ cliente.getId() +" incluido com sucesso!");
 		} else {
-			model.addAttribute("msgSuccess", "Usuario "+ cliente.getId() +" alterado com sucesso!");
+			model.addAttribute("msgSuccess", "Cliente "+ cliente.getId() +" alterado com sucesso!");
 		}
 		
 		return this.telaLista(model);

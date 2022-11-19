@@ -34,7 +34,7 @@ public class ClienteTeste implements ApplicationRunner  {
 		c1.setNome("Jose Pereira");
 		c1.setUsuario(usr1);
 		System.out.println(c1);
-		clienteService.incluir(c1);
+		clienteService.salvar(c1);
 		
 		Cliente c2 = new Cliente();
 		c2.setCpf("073.024.356-09");
@@ -42,7 +42,7 @@ public class ClienteTeste implements ApplicationRunner  {
 		c2.setNome("Maria da Silva");
 		c2.setUsuario(usr1);
 		System.out.println(c2);
-		clienteService.incluir(c2);
+		clienteService.salvar(c2);
 		
 		Cliente c3 = new Cliente();
 		c3.setCpf("192.027.311-01");
@@ -50,7 +50,7 @@ public class ClienteTeste implements ApplicationRunner  {
 		c3.setNome("João Pedro");
 		c3.setUsuario(usr2);
 		System.out.println(c3);
-		clienteService.incluir(c3);
+		clienteService.salvar(c3);
 		
 	}
 

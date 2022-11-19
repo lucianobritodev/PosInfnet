@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import br.com.infnet.locadoraveiculos.model.domain.enuns.StatusReserva;
 
 @Entity
@@ -22,10 +24,12 @@ public class Reserva {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+	private LocalDateTime dataReserva;
+	private int diasReservados;
 	@Enumerated(EnumType.ORDINAL)
 	private StatusReserva status;
 	private String descricao;
-	private LocalDateTime dataReserva;
 	
 	@Transient
 	private Cliente cliente;
@@ -40,13 +44,29 @@ public class Reserva {
 		this();
 		this.cliente = cliente;
 	}
-
+	
 	public Long getId() {
 		return id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public LocalDateTime getDataReserva() {
+		return dataReserva;
+	}
+
+	public void setDataReserva(LocalDateTime dataReserva) {
+		this.dataReserva = dataReserva;
+	}
+
+	public int getDiasReservados() {
+		return diasReservados;
+	}
+
+	public void setDiasReservados(int diasReservados) {
+		this.diasReservados = diasReservados;
 	}
 
 	public StatusReserva getStatus() {
@@ -60,23 +80,15 @@ public class Reserva {
 	public String getDescricao() {
 		return descricao;
 	}
-	
+
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-
-	public LocalDateTime getDataReserva() {
-		return dataReserva;
-	}
-
-	public void setDataReserva(LocalDateTime dataReserva) {
-		this.dataReserva = dataReserva;
 	}
 
 	public Cliente getCliente() {
 		return cliente;
 	}
-	
+
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
@@ -84,11 +96,19 @@ public class Reserva {
 	public List<Veiculo> getVeiculos() {
 		return veiculos;
 	}
-	
+
 	public void setVeiculos(List<Veiculo> veiculos) {
 		this.veiculos = veiculos;
 	}
 
+	public float getTotalReserva() {
+		float valores = 0;
+		for (Veiculo v : veiculos) {
+			valores += v.getValor();
+		}
+		return diasReservados * valores; 
+	}
+	
 	@Override
 	public String toString() {
 		return status + ";" + descricao + ";" + dataReserva + ";" + cliente + ";" + veiculos.size();

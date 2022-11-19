@@ -31,7 +31,7 @@ public class TratorTeste implements ApplicationRunner {
 		t1.setValor(650);
 		t1.setMotor("390 cv");
 		System.out.println(t1);
-		tratorService.incluir(t1);
+		tratorService.salvar(t1);
 		
 		Trator t2 = new Trator();
 		t2.setNome("New Holland");
@@ -42,7 +42,7 @@ public class TratorTeste implements ApplicationRunner {
 		t2.setValor(980);
 		t2.setMotor("440 cv");
 		System.out.println(t2);
-		tratorService.incluir(t2);
+		tratorService.salvar(t2);
 		
 		Trator t3 = new Trator();
 		t3.setNome("John Deere");
@@ -53,7 +53,7 @@ public class TratorTeste implements ApplicationRunner {
 		t3.setValor(1300);
 		t3.setMotor("410 cv");
 		System.out.println(t3);
-		tratorService.incluir(t3);
+		tratorService.salvar(t3);
 		
 	}
 

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.infnet.locadoraveiculos.model.domain.Carreta;
+import br.com.infnet.locadoraveiculos.model.domain.enuns.Combustivel;
 import br.com.infnet.locadoraveiculos.model.service.CarretaService;
 
 @Controller
@@ -34,19 +35,21 @@ public class CarretaController {
 	@GetMapping(value = "/cadastrar")
 	public ModelAndView telaCadastro(Model model) {
 		model.addAttribute("carreta", new Carreta());
+		model.addAttribute("combustivelLista", Combustivel.values());
 		return new ModelAndView("/carreta/cadastrar");
 	}
 	
 	@GetMapping(value = "/{id}/editar")
 	public ModelAndView editar(Model model, @PathVariable("id") Long id) {
 		model.addAttribute("carreta", carretaService.obterUm(id));
+		model.addAttribute("combustivelLista", Combustivel.values());
 		return new ModelAndView("/carreta/cadastrar");
 	}
 	
-	@PostMapping(value = "/incluir")
-	public ModelAndView incluir(Model model, @ModelAttribute("carreta") Carreta carreta) {
+	@PostMapping(value = "/salvar")
+	public ModelAndView salvar(Model model, @ModelAttribute("carreta") Carreta carreta) {
 		boolean incluir = carreta.getId() == null ? true : false;
-		carreta = carretaService.incluir(carreta);
+		carreta = carretaService.salvar(carreta);
 		
 		if(incluir) {			
 			model.addAttribute("msgSuccess", "Usuario "+ carreta.getId() +" incluido com sucesso!");

@@ -24,13 +24,13 @@ public class UsuarioTeste implements ApplicationRunner {
 		usr1.setNome("Administrador");
 		usr1.setEmail("admin@email.com");
 		usr1.setSenha("123");
-		usuarioService.incluir(usr1);
+		usuarioService.salvar(usr1);
 		
 		Usuario usr2 = new Usuario();
 		usr2.setNome("Luciano");
 		usr2.setEmail("luciano@email.com");
 		usr2.setSenha("123");
-		usuarioService.incluir(usr2);
+		usuarioService.salvar(usr2);
 		
 	}
 

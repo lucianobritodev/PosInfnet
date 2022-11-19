@@ -76,22 +76,25 @@ public class ReservaTeste implements ApplicationRunner {
 		r1.setStatus(StatusReserva.FINALIZADO);
 		r1.setDescricao("Cliente buscará o veículo a tarde");
 		r1.setVeiculos(Arrays.asList(v1, v2, v3));
+		r1.setDiasReservados(3);
 		System.out.println(r1);
-		reservaService.incluir(r1);
+		reservaService.salvar(r1);
 		
 		Reserva r2 = new Reserva(c1);
 		r2.setStatus(StatusReserva.PENDENTE);
 		r2.setDescricao("Cliente virá na loja para passar o cartão");
 		r2.setVeiculos(Arrays.asList(v2, v3));
+		r2.setDiasReservados(3);
 		System.out.println(r2);
-		reservaService.incluir(r2);
+		reservaService.salvar(r2);
 		
 		Reserva r3 = new Reserva(c3);
 		r3.setStatus(StatusReserva.RECUSADO);
 		r3.setDescricao("Cliente não possui limite no cartão");
 		r3.setVeiculos(Arrays.asList(v1));
+		r3.setDiasReservados(3);
 		System.out.println(r3);
-		reservaService.incluir(r3);
+		reservaService.salvar(r3);
 		
 	}
 

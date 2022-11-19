@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.infnet.locadoraveiculos.model.domain.Trator;
 import br.com.infnet.locadoraveiculos.model.repository.TratorRepository;
-import br.com.infnet.locadoraveiculos.model.service.exception.IdentifierCanNotBeNullOrZeroException;
+import br.com.infnet.locadoraveiculos.model.service.exception.IdentifierCanNotBeEmptyNullOrZeroException;
 import br.com.infnet.locadoraveiculos.model.service.exception.ResourceNotFoundException;
 
 @Service
@@ -23,42 +23,28 @@ public class TratorService {
 	}
 
 	@Transactional(readOnly = true)
-	public Trator obterUm(final Long id) throws ResourceNotFoundException, IdentifierCanNotBeNullOrZeroException {
-		if(id == null || id == 0) throw new IdentifierCanNotBeNullOrZeroException("Identificador não pode ser zero ou nulo!");
+	public Trator obterUmPorId(final Long id) throws ResourceNotFoundException, IdentifierCanNotBeEmptyNullOrZeroException {
+		if(id == null || id == 0) throw new IdentifierCanNotBeEmptyNullOrZeroException("Identificador não pode ser zero ou nulo!");
 		return tratorRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Trator com identificador " + id + " não encontrado!"));
 	}
 	
 	@Transactional
-	public Trator incluir(Trator trator) {
+	public Trator salvar(Trator trator) {
 		try {
 			trator = tratorRepository.saveAndFlush(trator);
-		} catch (ResourceNotFoundException | IdentifierCanNotBeNullOrZeroException e) {
+		} catch (ResourceNotFoundException | IdentifierCanNotBeEmptyNullOrZeroException e) {
 			e.printStackTrace();
 		}
-		return trator;
-	}
-	
-	@Transactional
-	public Trator atualizar(final Long id, Trator trator) {
-
-		try {			
-			this.obterUm(id);
-			trator.setId(id);
-			trator = tratorRepository.saveAndFlush(trator);
-		} catch (ResourceNotFoundException | IdentifierCanNotBeNullOrZeroException e) {
-			e.printStackTrace();
-		}
-		
 		return trator;
 	}
 	
 	@Transactional
 	public void excluir(final Long id) {
 		try {			
-			this.obterUm(id);
+			this.obterUmPorId(id);
 			tratorRepository.deleteById(id);
-		} catch (ResourceNotFoundException | IdentifierCanNotBeNullOrZeroException e) {
+		} catch (ResourceNotFoundException | IdentifierCanNotBeEmptyNullOrZeroException e) {
 			e.printStackTrace();
 		}
 	}

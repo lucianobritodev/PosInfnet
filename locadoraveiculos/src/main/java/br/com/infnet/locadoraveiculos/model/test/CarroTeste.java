@@ -31,7 +31,7 @@ public class CarroTeste implements ApplicationRunner {
 		cp1.setMotor("77 cv");
 		cp1.setDirecaoHidraulica(false);
 		System.out.println(cp1);
-		carroService.incluir(cp1);
+		carroService.salvar(cp1);
 		
 		Carro cp2 = new Carro();
 		cp2.setNome("Volvo");
@@ -43,7 +43,7 @@ public class CarroTeste implements ApplicationRunner {
 		cp2.setDirecaoHidraulica(true);
 		cp2.setMotor("230 cv");
 		System.out.println(cp2);
-		carroService.incluir(cp2);
+		carroService.salvar(cp2);
 		
 		Carro cp3 = new Carro();
 		cp3.setNome("Saveiro");
@@ -55,7 +55,7 @@ public class CarroTeste implements ApplicationRunner {
 		cp3.setDirecaoHidraulica(true);
 		cp3.setMotor("106 cv");
 		System.out.println(cp3);
-		carroService.incluir(cp3);
+		carroService.salvar(cp3);
 		
 	}
 

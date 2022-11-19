@@ -15,11 +15,11 @@
 <body>
 
 	<jsp:include page="../static/header.jsp" />
+	<tags:mensagem />
 	
 	<div class="container col-sm-6 col-offset-3 mt-4 mb-4">
-		<tags:mensagem />
 		<h1 class="mb-4">Cadastro de Cliente</h1>
-		<form:form action="/cliente/incluir" method="post" modelAttribute="cliente">
+		<form:form action="/cliente/salvar" method="post" modelAttribute="cliente">
 		  <div class="form-group mb-4">
 		    <form:input type="hidden" id="id" class="form-control" placeholder="Entre com o seu nome" path="id" readonly="true" />
 		  </div>
@@ -33,19 +33,22 @@
 		  </div>
 		  <div class="form-group mb-4">
 		    <label for="cpf">CPF:</label>
-		    <form:input type="text" id="cpf" class="form-control" placeholder="Entre com o seu CPF" path="cpf" />
+		    <form:input type="text" id="cpf" class="form-control" placeholder="Entre com o seu CPF" maxlength="11" path="cpf" />
 		  </div>
+		  
 		  <div class="row mb-4">
-			<div class="d-flex flex-row-reverse">			
-			  <button type="submit" class="btn btn-success">
+			<div class="d-flex">
+			  <button type="reset" class="btn btn-secondary me-auto"><i class="bi bi-recycle"></i>&nbsp;Limpar</button>
+			  <a  href="/cliente/listar" class="btn btn-secondary"><i class="bi bi-x-lg"></i>&nbsp;Cancelar</a>&nbsp;
+			  <button type="submit" class="btn btn-success"><i class="bi bi-check-lg"></i>&nbsp;
 			  	<c:if test="${ cliente.id gt 0 }">Salvar</c:if>
 			  	<c:if test="${ cliente.id eq null }">Cadastrar</c:if>
 			  </button>
-			</div>		
+			</div>	
 		  </div>
+		  
 		</form:form>
 	</div>
-	
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+	<tags:scripts />	
 </body>
 </html>

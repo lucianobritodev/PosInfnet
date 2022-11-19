@@ -17,7 +17,7 @@
 	
 	<div class="container">
 		<tags:mensagem />
-		<h1>Veículos</h1>
+		<h1 class="mt-4 mb-4">Veículos</h1>
 		<div class="row">
 			<table class="table table-hover">
 				<thead>

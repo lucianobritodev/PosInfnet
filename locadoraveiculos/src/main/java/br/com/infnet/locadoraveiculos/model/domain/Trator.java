@@ -10,23 +10,33 @@ import br.com.infnet.locadoraveiculos.model.domain.enuns.TipoTrator;
 @Entity
 @Table(name = "tb_trator")
 public class Trator extends Veiculo {
-	
+
 	@Enumerated(EnumType.ORDINAL)
 	private TipoTrator tipoTrator;
-	
-	public Trator() { }
+	private Boolean pilotoAutomatico;
+
+	public Trator() {
+	}
 
 	public TipoTrator getTipoTrator() {
 		return tipoTrator;
 	}
 
 	public void setTipoTrator(TipoTrator tipoTrator) {
-		this.tipoTrator = tipoTrator;	
+		this.tipoTrator = tipoTrator;
 	}
 
+	public Boolean getPilotoAutomatico() {
+		return pilotoAutomatico;
+	}
+
+	public void setPilotoAutomatico(Boolean pilotoAutomatico) {
+		this.pilotoAutomatico = pilotoAutomatico;
+	}	
+	
 	@Override
 	public String toString() {
 		return tipoTrator + ";" + super.toString();
 	}
-	
+
 }

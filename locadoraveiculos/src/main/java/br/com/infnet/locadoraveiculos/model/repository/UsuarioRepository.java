@@ -8,6 +8,6 @@ import br.com.infnet.locadoraveiculos.model.domain.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
-	Usuario findByEmailAndSenha(String email, String senha);
+	Usuario findByEmail(String email);
 	
 }

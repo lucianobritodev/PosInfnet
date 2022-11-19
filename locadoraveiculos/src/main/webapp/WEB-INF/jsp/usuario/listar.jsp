@@ -14,17 +14,24 @@
 <body>
 
 	<jsp:include page="../static/header.jsp" />
+	<tags:mensagem />
 	
 	<div class="container">
-		<tags:mensagem />
-		<h1>Usuarios</h1>
+		<h1 class="mt-4 mb-4">Usuarios</h1>
+		<div class="row mb-4">
+			<div class="d-flex flex-row-reverse">			
+				<a class="btn btn-primary p-2" href="/usuario/cadastrar"><i class="bi bi-plus"></i> Incluir&nbsp;&nbsp;</a> 
+			</div>		
+		</div>
 		<div class="row">
+		  <div class="table-responsive">
 			<table class="table table-hover">
 				<thead>
 					<tr>			
 						<th>ID</th>	
 						<th>Nome</th>
 						<th>Email</th>
+						<th>Senha</th>
 						<th style="width: 80px">Excluir</th>
 						<th style="width: 80px">Editar</th>
 					</tr>
@@ -35,15 +42,17 @@
 							<th scope="row">${ usuario.id }</th>
 							<td>${ usuario.nome }</td>
 							<td>${ usuario.email }</td>
+							<td>${ usuario.senha }</td>
 							<td><a href="/usuario/${ usuario.id }/excluir" class="btn btn-danger"><i class="bi bi-trash"></i></a></td>
 							<td><a href="/usuario/${ usuario.id }/editar" class="btn btn-secondary"><i class="bi bi-pencil-square"></i></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
+		  </div>	
 		</div>
 	</div>
 	
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+	<tags:scripts />
 </body>
 </html>

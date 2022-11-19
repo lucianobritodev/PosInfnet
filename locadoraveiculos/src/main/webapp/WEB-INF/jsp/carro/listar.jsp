@@ -14,10 +14,15 @@
 <body>
 
 	<jsp:include page="../static/header.jsp" />
+	<tags:mensagem />
 	
 	<div class="container">
-		<tags:mensagem />
-		<h1>Carros</h1>
+		<h1 class="mt-4 mb-4">Carros</h1>
+		<div class="row mb-4">
+			<div class="d-flex flex-row-reverse">			
+				<a class="btn btn-primary p-2" href="/carro/cadastrar"><i class="bi bi-plus"></i> Incluir&nbsp;&nbsp;</a> 
+			</div>		
+		</div>
 		<div class="row">
 			<table class="table table-hover">
 				<thead>
@@ -31,7 +36,8 @@
 						<th>Motor</th>
 						<th>Direção</th>
 						<th>Valor</th>
-						<th>Excluir</th>
+						<th style="width: 80px">Excluir</th>
+						<th style="width: 80px">Editar</th>
 					</tr>
 				</thead>
 				<tbody id="lista">
@@ -49,13 +55,13 @@
 								<fmt:formatNumber type="number" minFractionDigits="2" value="${ carro.valor }" />	
 							</td>
 							<td><a href="/carro/${ carro.id }/excluir" class="btn btn-danger"><i class="bi bi-trash"></i></a></td>
+							<td><a href="/carro/${ carro.id }/editar" class="btn btn-secondary"><i class="bi bi-pencil-square"></i></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
 	</div>
-	
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+	<tags:scripts />	
 </body>
 </html>
