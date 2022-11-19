@@ -24,7 +24,7 @@ public class CarretaTeste implements ApplicationRunner{
 		Carreta c1 = new Carreta();
 		c1.setNome("Volvo");
 		c1.setCapacidadeReboque(30000);
-		c1.setCodigoChassi(151364852);
+		c1.setCodigoChassi(1513648);
 		c1.setCor("Amarelo");
 		c1.setCombustivel(Combustivel.DIESEL);
 		c1.setValor(300.0f);
@@ -35,7 +35,7 @@ public class CarretaTeste implements ApplicationRunner{
 		Carreta c2 = new Carreta();
 		c2.setNome("Scania");
 		c2.setCapacidadeReboque(50000);
-		c2.setCodigoChassi(24365432);
+		c2.setCodigoChassi(2436543);
 		c2.setCor("Azul");
 		c2.setCombustivel(Combustivel.DIESEL);
 		c2.setValor(700.0f);
@@ -46,7 +46,7 @@ public class CarretaTeste implements ApplicationRunner{
 		Carreta c3 = new Carreta();
 		c3.setNome("Iveco");
 		c3.setCapacidadeReboque(10000);
-		c3.setCodigoChassi(463016383);
+		c3.setCodigoChassi(4630163);
 		c3.setCor("Vermelho");
 		c3.setCombustivel(Combustivel.GAS_NATURAL);
 		c3.setValor(900.0f);

@@ -24,7 +24,7 @@ public class CarroTeste implements ApplicationRunner {
 		Carro cp1 = new Carro();
 		cp1.setNome("Gol");
 		cp1.setAssentos(5);
-		cp1.setCodigoChassi(46521871);
+		cp1.setCodigoChassi(4652187);
 		cp1.setCor("Vermelho");
 		cp1.setCombustivel(Combustivel.FLEX);
 		cp1.setValor(100);
@@ -36,7 +36,7 @@ public class CarroTeste implements ApplicationRunner {
 		Carro cp2 = new Carro();
 		cp2.setNome("Volvo");
 		cp2.setAssentos(7);
-		cp2.setCodigoChassi(785412232);
+		cp2.setCodigoChassi(7854122);
 		cp2.setCor("Prata");
 		cp2.setCombustivel(Combustivel.GAS_NATURAL);
 		cp2.setValor(200);
@@ -48,7 +48,7 @@ public class CarroTeste implements ApplicationRunner {
 		Carro cp3 = new Carro();
 		cp3.setNome("Saveiro");
 		cp3.setAssentos(2);
-		cp3.setCodigoChassi(369548410);
+		cp3.setCodigoChassi(3695484);
 		cp3.setCor("Preto");
 		cp3.setCombustivel(Combustivel.ALCOOL);
 		cp3.setValor(100);

@@ -17,7 +17,7 @@
 	<jsp:include page="../static/header.jsp" />
 	<tags:mensagem />
 	
-	<div class="container col-sm-6 col-offset-3 mt-4 mb-4">
+	<div class="container col-sm-8 col-offset-2 border border-secondary rounded p-4 mt-4 mb-4">
 		<h1 class="mb-4">Cadastro de Cliente</h1>
 		<form:form action="/cliente/salvar" method="post" modelAttribute="cliente">
 		  <div class="form-group mb-4">

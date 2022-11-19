@@ -15,7 +15,7 @@ import br.com.infnet.locadoraveiculos.model.domain.Usuario;
 public class AutorizationInterceptor implements HandlerInterceptor {
 	
 	private List<String> rotasPulblicas = Arrays
-			.asList("/", "/login", "/logout", "/usuario/cadastrar");
+			.asList("/", "/login", "/logout", "/usuario/cadastrar", "/usuario/salvar");
 
 	@Override
 	public boolean preHandle(

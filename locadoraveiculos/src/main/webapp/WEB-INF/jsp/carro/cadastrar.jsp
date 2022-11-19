@@ -19,7 +19,7 @@
 	
 	<div class="container col-sm-8 col-offset-2 border border-secondary rounded p-4 mt-4 mb-4">
 		<h1 class="mb-4">Cadastro de Carro</h1>
-		<form:form action="/carro/salvar" method="post" modelAttribute="carro" data-toggle="validator" >
+		<form:form action="/carro/salvar" method="post" modelAttribute="carro" >
 		   <div class="row">
 			  <div class="form-group mb-4">
 			    <form:input type="hidden" id="id" class="form-control" placeholder="Entre com o seu nome" path="id" readonly="true" />

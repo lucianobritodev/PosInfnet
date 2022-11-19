@@ -36,7 +36,7 @@ public class AppController {
 	public String login(Model model, @RequestParam String email, @RequestParam String senha) {
 		Usuario usuario = usuarioService.validar(email, senha);
 
-		if(usuario != null) {
+		if(usuario.getId() != null) {
 			model.addAttribute("user", usuario);
 			return "redirect:/home";
 		}

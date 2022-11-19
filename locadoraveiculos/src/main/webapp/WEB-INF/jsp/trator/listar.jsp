@@ -20,7 +20,7 @@
 		<h1 class="mt-4 mb-4">Tratores</h1>
 		<div class="row mb-4">
 			<div class="d-flex flex-row-reverse">			
-				<a class="btn btn-primary p-2" href="/cliente/cadastrar"><i class="bi bi-plus"></i> Incluir&nbsp;&nbsp;</a> 
+				<a class="btn btn-primary p-2" href="/trator/cadastrar"><i class="bi bi-plus"></i> Incluir&nbsp;&nbsp;</a> 
 			</div>		
 		</div>
 		<div class="row">

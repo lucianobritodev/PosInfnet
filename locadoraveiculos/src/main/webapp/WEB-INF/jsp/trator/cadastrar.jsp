@@ -24,10 +24,12 @@
 			  <div class="form-group mb-4">
 			    <form:input type="hidden" id="id" class="form-control" placeholder="Entre com o seu nome" path="id" readonly="true" />
 			  </div>
+			  
 			  <div class="form-group mb-4 col-sm-8">
 			    <label class="form-label" for="nome">Nome:</label>
 			    <form:input type="text" id="nome" class="form-control" placeholder="Entre com o seu nome" path="nome" minlength="3" required="true" />
 			  </div>
+			  
 			  <div class="form-group mb-4 col-sm-4">
 			    <label class="form-label" for="codigoChassi">Chassi:</label>
 			    <form:input 
@@ -45,7 +47,7 @@
 		  </div>
 		  
 		  <div class="row">
-		  	  <div class="col-sm-6 mb-4">
+		  	  <div class="mb-4 col-sm-6">
 				<label class="form-label" id="valor-label" for="valor">Valor:</label>
 				<div class="d-flex">
 			  	  <div class="form-group col me-auto">
@@ -54,12 +56,12 @@
 				</div>
 			  </div>
 			  
-			  <div class="form-group mb-4 col-sm-4">
-				  <label class="form-label">Tipo:</label>
+			  <div class="form-group mb-4 col-sm-3">
+				  <label class="form-label">Tipo Trator:</label>
 				  <form:select path="tipoTrator" class="form-select" required="true" >
 					  <form:option value="">Selecione</form:option>
 					  <c:forEach var="tratorItem" items="${ tratorLista }">
-					  	<form:option value="${ tratorItem }" />
+					  	<form:option value="${ tratorItem }"/>
 					  </c:forEach>
 				  </form:select>
 			  </div>

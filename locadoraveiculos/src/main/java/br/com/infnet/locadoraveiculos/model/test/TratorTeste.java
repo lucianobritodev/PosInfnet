@@ -24,7 +24,7 @@ public class TratorTeste implements ApplicationRunner {
 		
 		Trator t1 = new Trator();
 		t1.setNome("Massey Ferguson");
-		t1.setCodigoChassi(186541215);
+		t1.setCodigoChassi(1865412);
 		t1.setCor("Verde");
 		t1.setCombustivel(Combustivel.DIESEL);
 		t1.setTipoTrator(TipoTrator.FLORESTAL);
@@ -35,18 +35,18 @@ public class TratorTeste implements ApplicationRunner {
 		
 		Trator t2 = new Trator();
 		t2.setNome("New Holland");
-		t2.setCodigoChassi(635874122);
+		t2.setCodigoChassi(6358741);
 		t2.setCor("Vermelho");
 		t2.setCombustivel(Combustivel.DIESEL);
 		t2.setTipoTrator(TipoTrator.ESTEIRA);
-		t2.setValor(980);
+		t2.setValor(1000);
 		t2.setMotor("440 cv");
 		System.out.println(t2);
 		tratorService.salvar(t2);
 		
 		Trator t3 = new Trator();
 		t3.setNome("John Deere");
-		t3.setCodigoChassi(63548423);
+		t3.setCodigoChassi(6354842);
 		t3.setCor("Amarelo");
 		t3.setCombustivel(Combustivel.ELETRICO);
 		t3.setTipoTrator(TipoTrator.AGRICOLA);

@@ -55,9 +55,9 @@ public class TratorController {
 		trator = tratorService.salvar(trator);
 		
 		if(incluir) {			
-			model.addAttribute("msgSuccess", "Carro "+ trator.getId() +" incluido com sucesso!");
+			model.addAttribute("msgSuccess", "Trator "+ trator.getId() +" incluido com sucesso!");
 		} else {
-			model.addAttribute("msgSuccess", "Carro "+ trator.getId() +" alterado com sucesso!");
+			model.addAttribute("msgSuccess", "Trator "+ trator.getId() +" alterado com sucesso!");
 		}
 		
 		return this.telaLista(model);

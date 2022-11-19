@@ -1,5 +1,7 @@
 package br.com.infnet.locadoraveiculos.controllers;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,16 +46,18 @@ public class UsuarioController {
 	}
 
 	@PostMapping(value = "/salvar")
-	public ModelAndView salvar(Model model, @ModelAttribute("usuario") Usuario usuario) {
+	public ModelAndView salvar(Model model, @ModelAttribute("usuario") Usuario usuario, HttpServletRequest req) {
 		boolean incluir = usuario.getId() == null ? true : false;
+		Usuario user = (Usuario) req.getSession().getAttribute("user");
 		usuario = usuarioService.salvar(usuario);
 		
-		if(incluir) {			
+		if(incluir) {
 			model.addAttribute("msgSuccess", "Usuario "+ usuario.getNome().split(" ")[0] +" incluido com sucesso!");
-		} else {
-			model.addAttribute("msgSuccess", "Usuario "+ usuario.getNome().split(" ")[0] +" alterado com sucesso!");
+			if(user == null) return new ModelAndView("/login");
+			return this.telaLista(model);
 		}
 		
+		model.addAttribute("msgSuccess", "Usuario "+ usuario.getNome().split(" ")[0] +" alterado com sucesso!");
 		return this.telaLista(model);
 	}
 	

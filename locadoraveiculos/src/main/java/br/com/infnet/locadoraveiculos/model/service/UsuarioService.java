@@ -67,7 +67,7 @@ public class UsuarioService {
 		if(usuario != null && encoder.matches(senha, usuario.getSenha())) {
 			return usuario;
 		}
-		return null;
+		return new Usuario();
 	}
 	
 }
