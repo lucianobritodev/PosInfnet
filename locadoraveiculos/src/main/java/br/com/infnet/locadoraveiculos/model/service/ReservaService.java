@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.infnet.locadoraveiculos.model.domain.Reserva;
+import br.com.infnet.locadoraveiculos.model.domain.Usuario;
 import br.com.infnet.locadoraveiculos.model.repository.ReservaRepository;
 import br.com.infnet.locadoraveiculos.model.service.exception.IdentifierCanNotBeEmptyNullOrZeroException;
 import br.com.infnet.locadoraveiculos.model.service.exception.ResourceNotFoundException;
@@ -20,6 +21,11 @@ public class ReservaService {
 	@Transactional(readOnly = true)
 	public List<Reserva> obterTodos() {
 		return reservaRepository.findAll();
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Reserva> obterTodosPorUsuario(Usuario usuario) {
+		return reservaRepository.findAllByUserId(usuario.getId());
 	}
 
 	@Transactional(readOnly = true)

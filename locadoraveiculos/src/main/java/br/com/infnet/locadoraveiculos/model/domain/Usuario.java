@@ -2,12 +2,14 @@ package br.com.infnet.locadoraveiculos.model.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,11 +23,27 @@ public class Usuario {
 	private String email;
 	private String senha;
 	
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "id_endereco")
+	private Endereco endereco;
+	
 	@OneToMany
-	@JoinColumn(name = "idUsuario")
+	@JoinColumn(name = "id_usuario")
 	private List<Cliente> clientes;
 	
+	@OneToMany
+	@JoinColumn(name = "id_usuario")
+	private List<Reserva> reservas;
+	
+	@OneToMany
+	@JoinColumn(name = "id_usuario")
+	private List<Veiculo> veiculos;
+	
 	public Usuario() { }
+	
+	public Usuario(Endereco endereco) {
+		this.endereco = endereco;
+	}
 
 	public Long getId() {
 		return id;
@@ -59,12 +77,36 @@ public class Usuario {
 		this.senha = senha;
 	}
 
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
 	public List<Cliente> getClientes() {
 		return clientes;
 	}
 
 	public void setClientes(List<Cliente> clientes) {
 		this.clientes = clientes;
+	}
+
+	public List<Reserva> getReservas() {
+		return reservas;
+	}
+
+	public void setReservas(List<Reserva> reservas) {
+		this.reservas = reservas;
+	}
+
+	public List<Veiculo> getVeiculos() {
+		return veiculos;
+	}
+
+	public void setVeiculos(List<Veiculo> veiculos) {
+		this.veiculos = veiculos;
 	}
 
 	@Override

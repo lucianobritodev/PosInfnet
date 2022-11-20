@@ -18,8 +18,8 @@ public class UsuarioTeste implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		System.out.println("## Usuário ##");
-		
+		System.out.println("## Cadastro de Usuário ##");
+
 		Usuario usr1 = new Usuario();
 		usr1.setNome("Administrador");
 		usr1.setEmail("admin@email.com");
@@ -27,11 +27,10 @@ public class UsuarioTeste implements ApplicationRunner {
 		usuarioService.salvar(usr1);
 		
 		Usuario usr2 = new Usuario();
-		usr2.setNome("Luciano");
-		usr2.setEmail("luciano@email.com");
+		usr2.setNome("User");
+		usr2.setEmail("user@email.com");
 		usr2.setSenha("123");
 		usuarioService.salvar(usr2);
-		
 	}
 
 }

@@ -20,7 +20,7 @@ public class Cliente {
 	private String email;
 	
 	@ManyToOne
-	@JoinColumn(name = "idUsuario")
+	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 	
 	public Cliente() { }

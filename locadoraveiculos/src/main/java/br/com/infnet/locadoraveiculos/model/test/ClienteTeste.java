@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import br.com.infnet.locadoraveiculos.model.domain.Cliente;
 import br.com.infnet.locadoraveiculos.model.domain.Usuario;
 import br.com.infnet.locadoraveiculos.model.service.ClienteService;
+import br.com.infnet.locadoraveiculos.model.service.UsuarioService;
 
 
 @Order(2)
@@ -17,16 +18,16 @@ public class ClienteTeste implements ApplicationRunner  {
 	
 	@Autowired
 	private ClienteService clienteService;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		System.out.println("## Clientes ##");
+		System.out.println("## Cadastro de Clientes ##");
 		
-		Usuario usr1 = new Usuario();
-		usr1.setId(1l);
-		
-		Usuario usr2 = new Usuario();
-		usr2.setId(2l);
+		Usuario usr1 = usuarioService.obterUm(1l);
+		Usuario usr2 = usuarioService.obterUm(2l);
 		
 		Cliente c1 = new Cliente();
 		c1.setCpf("001.025.356-01");

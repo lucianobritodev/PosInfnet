@@ -51,12 +51,8 @@ public class CarretaController {
 		boolean incluir = carreta.getId() == null ? true : false;
 		carreta = carretaService.salvar(carreta);
 		
-		if(incluir) {			
-			model.addAttribute("msgSuccess", "Usuario "+ carreta.getId() +" incluido com sucesso!");
-		} else {
-			model.addAttribute("msgSuccess", "Usuario "+ carreta.getId() +" alterado com sucesso!");
-		}
-		
+		String mensagem = incluir ? "Carreta "+ carreta.getId() +" incluido com sucesso!" : "Carreta "+ carreta.getId() +" alterado com sucesso!";
+		model.addAttribute("msgSuccess", mensagem);
 		return this.telaLista(model);
 	}
 	

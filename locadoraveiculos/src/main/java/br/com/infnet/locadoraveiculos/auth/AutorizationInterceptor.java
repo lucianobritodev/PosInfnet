@@ -15,7 +15,7 @@ import br.com.infnet.locadoraveiculos.model.domain.Usuario;
 public class AutorizationInterceptor implements HandlerInterceptor {
 	
 	private List<String> rotasPulblicas = Arrays
-			.asList("/", "/login", "/logout", "/usuario/cadastrar", "/usuario/salvar");
+			.asList("/", "/login", "/logout", "/usuario/cadastrar", "/usuario/cep", "/usuario/salvar");
 
 	@Override
 	public boolean preHandle(
@@ -27,7 +27,7 @@ public class AutorizationInterceptor implements HandlerInterceptor {
 		Usuario usuario = (Usuario) request.getSession().getAttribute("user");
 		
 		//TODO adicionar roles
-		if(usuario != null) return true;
+		if(usuario != null && !uri.equals("/usuario/cep")) return true;
 		
 		for(String rota : rotasPulblicas) {
 			if(uri.endsWith(rota)) {

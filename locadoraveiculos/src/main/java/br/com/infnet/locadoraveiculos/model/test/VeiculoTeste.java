@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import br.com.infnet.locadoraveiculos.model.domain.Carreta;
 import br.com.infnet.locadoraveiculos.model.domain.Carro;
 import br.com.infnet.locadoraveiculos.model.domain.Trator;
+import br.com.infnet.locadoraveiculos.model.domain.Usuario;
 import br.com.infnet.locadoraveiculos.model.domain.enuns.Combustivel;
 import br.com.infnet.locadoraveiculos.model.domain.enuns.TipoTrator;
 import br.com.infnet.locadoraveiculos.model.service.VeiculoService;
@@ -22,7 +23,13 @@ public class VeiculoTeste implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		System.out.println("## Veículos ##");
+		System.out.println("## Cadastro de Veículos ##");
+		
+		Usuario usr1 = new Usuario();
+		usr1.setId(1l);
+		
+		Usuario usr2 = new Usuario();
+		usr2.setId(2l);
 		
 		Trator v1 = new Trator();
 		v1.setNome("Massey Ferguson");
@@ -32,6 +39,7 @@ public class VeiculoTeste implements ApplicationRunner {
 		v1.setTipoTrator(TipoTrator.FLORESTAL);
 		v1.setValor(650);
 		v1.setMotor("390 cv");
+		v1.setUsuario(usr1);
 		System.out.println(v1);
 		veiculoService.incluir(v1);
 		
@@ -43,6 +51,7 @@ public class VeiculoTeste implements ApplicationRunner {
 		v2.setCombustivel(Combustivel.DIESEL);
 		v2.setValor(300.0f);
 		v2.setMotor("750 cv");
+		v1.setUsuario(usr2);
 		System.out.println(v2);
 		veiculoService.incluir(v2);
 		
@@ -55,6 +64,7 @@ public class VeiculoTeste implements ApplicationRunner {
 		v3.setValor(100);
 		v3.setMotor("77 cv");
 		v3.setDirecaoHidraulica(false);
+		v1.setUsuario(usr1);
 		System.out.println(v3);
 		veiculoService.incluir(v3);
 		

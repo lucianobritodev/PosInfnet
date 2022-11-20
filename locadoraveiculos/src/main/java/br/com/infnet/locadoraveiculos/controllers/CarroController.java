@@ -51,12 +51,8 @@ public class CarroController {
 		boolean incluir = carro.getId() == null ? true : false;
 		carro = carroService.salvar(carro);
 		
-		if(incluir) {			
-			model.addAttribute("msgSuccess", "Carro "+ carro.getId() +" incluido com sucesso!");
-		} else {
-			model.addAttribute("msgSuccess", "Carro "+ carro.getId() +" alterado com sucesso!");
-		}
-		
+		String mensagem = incluir ? "Carro "+ carro.getId() +" incluido com sucesso!" : "Carro "+ carro.getId() +" alterado com sucesso!";
+		model.addAttribute("msgSuccess", mensagem);
 		return this.telaLista(model);
 	}
 	

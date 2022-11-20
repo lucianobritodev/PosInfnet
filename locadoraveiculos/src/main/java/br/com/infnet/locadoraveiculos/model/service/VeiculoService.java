@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.infnet.locadoraveiculos.model.domain.Usuario;
 import br.com.infnet.locadoraveiculos.model.domain.Veiculo;
 import br.com.infnet.locadoraveiculos.model.repository.VeiculoRepository;
 import br.com.infnet.locadoraveiculos.model.service.exception.IdentifierCanNotBeEmptyNullOrZeroException;
@@ -20,6 +21,11 @@ public class VeiculoService {
 	@Transactional(readOnly = true)
 	public List<Veiculo> obterTodos() {
 		return veiculoRepository.findAll();
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Veiculo> obterTodosPorUsuario(Usuario usuario) {
+		return veiculoRepository.findAllByUserId(usuario.getId());
 	}
 
 	@Transactional(readOnly = true)

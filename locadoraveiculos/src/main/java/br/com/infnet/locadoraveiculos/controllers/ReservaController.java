@@ -55,13 +55,9 @@ public class ReservaController {
 	public ModelAndView salvar(Model model, @ModelAttribute("reserva") Reserva reserva) {
 		boolean incluir = reserva.getId() == null ? true : false;
 		reserva = reservaService.salvar(reserva);
-		
-		if(incluir) {			
-			model.addAttribute("msgSuccess", "Reserva "+ reserva.getId() +" incluida com sucesso!");
-		} else {
-			model.addAttribute("msgSuccess", "Reserva "+ reserva.getId() +" alterada com sucesso!");
-		}
-		
+
+		String mensagem = incluir ? "Reserva "+ reserva.getId() +" incluido com sucesso!" : "Reserva "+ reserva.getId() +" alterado com sucesso!";
+		model.addAttribute("msgSuccess", mensagem);
 		return this.telaLista(model);
 	}
 	

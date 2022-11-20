@@ -28,8 +28,8 @@ public class ClienteController {
 	}
 	
 	@GetMapping("/listar")
-	public ModelAndView telaLista(Model model) {
-		model.addAttribute("listagem", clienteService.obterTodos());
+	public ModelAndView telaLista(Model model, @SessionAttribute("user") Usuario usuario) {
+		model.addAttribute("listagem", clienteService.obterTodosPorUsuario(usuario));
 		return new ModelAndView("/cliente/listar");
 	}
 	
@@ -50,21 +50,17 @@ public class ClienteController {
 		boolean incluir = cliente.getId() == null ? true : false;
 		cliente.setUsuario(usuario);
 		cliente = clienteService.salvar(cliente);
-		
-		if(incluir) {			
-			model.addAttribute("msgSuccess", "Cliente "+ cliente.getId() +" incluido com sucesso!");
-		} else {
-			model.addAttribute("msgSuccess", "Cliente "+ cliente.getId() +" alterado com sucesso!");
-		}
-		
-		return this.telaLista(model);
+
+		String mensagem = incluir ? "Cliente "+ cliente.getId() +" incluido com sucesso!" : "Cliente "+ cliente.getId() +" alterado com sucesso!";
+		model.addAttribute("msgSuccess", mensagem);
+		return this.telaLista(model, usuario);
 	}
 	
 	@GetMapping("/{id}/excluir")
-	public ModelAndView excluir(@PathVariable("id") Long id, Model model) {
+	public ModelAndView excluir(@PathVariable("id") Long id, Model model, @SessionAttribute("user") Usuario usuario) {
 		clienteService.excluir(id);
 		model.addAttribute("msgSuccess", "Cliente "+ id +" excluido com sucesso!");
-		return this.telaLista(model);
+		return this.telaLista(model, usuario);
 	}
 	
 }

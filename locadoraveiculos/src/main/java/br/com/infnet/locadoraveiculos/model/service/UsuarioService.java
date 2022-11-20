@@ -7,6 +7,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.infnet.locadoraveiculos.clients.IEnderecoClient;
+import br.com.infnet.locadoraveiculos.model.domain.Endereco;
 import br.com.infnet.locadoraveiculos.model.domain.Usuario;
 import br.com.infnet.locadoraveiculos.model.repository.UsuarioRepository;
 import br.com.infnet.locadoraveiculos.model.service.exception.IdentifierCanNotBeEmptyNullOrZeroException;
@@ -17,6 +19,9 @@ public class UsuarioService {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+	
+	@Autowired
+	private IEnderecoClient enderecoClient;
 	
 	@Autowired
 	private PasswordEncoder encoder;
@@ -68,6 +73,11 @@ public class UsuarioService {
 			return usuario;
 		}
 		return new Usuario();
+	}
+	
+	
+	public Endereco obterEnderecoPorCep(String cep) {
+		return enderecoClient.obterEnderecoPorCep(cep);
 	}
 	
 }

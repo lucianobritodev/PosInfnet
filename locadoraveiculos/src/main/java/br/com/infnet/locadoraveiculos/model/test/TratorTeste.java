@@ -10,6 +10,7 @@ import br.com.infnet.locadoraveiculos.model.domain.Trator;
 import br.com.infnet.locadoraveiculos.model.domain.enuns.Combustivel;
 import br.com.infnet.locadoraveiculos.model.domain.enuns.TipoTrator;
 import br.com.infnet.locadoraveiculos.model.service.TratorService;
+import br.com.infnet.locadoraveiculos.model.service.UsuarioService;
 
 @Order(6)
 @Component
@@ -18,6 +19,9 @@ public class TratorTeste implements ApplicationRunner {
 	@Autowired
 	private TratorService tratorService;
 
+	@Autowired
+	private UsuarioService usuarioService;
+	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		System.out.println("## Trator ##");
@@ -30,6 +34,7 @@ public class TratorTeste implements ApplicationRunner {
 		t1.setTipoTrator(TipoTrator.FLORESTAL);
 		t1.setValor(650);
 		t1.setMotor("390 cv");
+		t1.setUsuario(usuarioService.obterUm(1l));
 		System.out.println(t1);
 		tratorService.salvar(t1);
 		
@@ -41,6 +46,7 @@ public class TratorTeste implements ApplicationRunner {
 		t2.setTipoTrator(TipoTrator.ESTEIRA);
 		t2.setValor(1000);
 		t2.setMotor("440 cv");
+		t2.setUsuario(usuarioService.obterUm(2l));
 		System.out.println(t2);
 		tratorService.salvar(t2);
 		
@@ -52,6 +58,7 @@ public class TratorTeste implements ApplicationRunner {
 		t3.setTipoTrator(TipoTrator.AGRICOLA);
 		t3.setValor(1300);
 		t3.setMotor("410 cv");
+		t3.setUsuario(usuarioService.obterUm(2l));
 		System.out.println(t3);
 		tratorService.salvar(t3);
 		

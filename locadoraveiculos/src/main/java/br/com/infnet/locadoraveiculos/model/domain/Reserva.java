@@ -1,17 +1,20 @@
 package br.com.infnet.locadoraveiculos.model.domain;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -31,10 +34,16 @@ public class Reserva {
 	private StatusReserva status;
 	private String descricao;
 	
-	@Transient
+	@OneToOne(cascade = CascadeType.DETACH)
+	@JoinColumn(name = "id_cliente")
 	private Cliente cliente;
-	@Transient
-	private List<Veiculo> veiculos = new ArrayList<>();
+	
+	@ManyToMany(cascade = CascadeType.DETACH)
+	private List<Veiculo> veiculos;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_usuario")
+	private Usuario usuario;
 	
 	public Reserva() {
 		dataReserva = LocalDateTime.now();
@@ -99,6 +108,14 @@ public class Reserva {
 
 	public void setVeiculos(List<Veiculo> veiculos) {
 		this.veiculos = veiculos;
+	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public float getTotalReserva() {

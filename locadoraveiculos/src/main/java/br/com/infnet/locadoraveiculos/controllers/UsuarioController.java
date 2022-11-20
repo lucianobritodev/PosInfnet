@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.infnet.locadoraveiculos.model.domain.Endereco;
 import br.com.infnet.locadoraveiculos.model.domain.Usuario;
 import br.com.infnet.locadoraveiculos.model.service.UsuarioService;
 
@@ -33,9 +34,17 @@ public class UsuarioController {
 		return new ModelAndView("/usuario/listar");
 	}
 	
+
+	@PostMapping(value = "/cep")
+	public ModelAndView obterCep(@ModelAttribute("usuario") Usuario usuario, Model model) {	
+		usuario.setEndereco(usuarioService.obterEnderecoPorCep(usuario.getEndereco().getCepPesquisa()));
+		model.addAttribute("usuario", usuario);
+		return new ModelAndView("/usuario/cadastrar");
+	}
+	
 	@GetMapping(value = "/cadastrar")
 	public ModelAndView telaCadastro(Model model) {
-		model.addAttribute("usuario", new Usuario());
+		model.addAttribute("usuario", new Usuario(new Endereco()));
 		return new ModelAndView("/usuario/cadastrar");
 	}
 	

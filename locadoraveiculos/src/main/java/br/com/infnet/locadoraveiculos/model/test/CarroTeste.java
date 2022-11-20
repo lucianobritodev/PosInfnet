@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import br.com.infnet.locadoraveiculos.model.domain.Carro;
 import br.com.infnet.locadoraveiculos.model.domain.enuns.Combustivel;
 import br.com.infnet.locadoraveiculos.model.service.CarroService;
+import br.com.infnet.locadoraveiculos.model.service.UsuarioService;
 
 @Order(4)
 @Component
@@ -16,6 +17,9 @@ public class CarroTeste implements ApplicationRunner {
 
 	@Autowired
 	private CarroService carroService;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -30,6 +34,7 @@ public class CarroTeste implements ApplicationRunner {
 		cp1.setValor(100);
 		cp1.setMotor("77 cv");
 		cp1.setDirecaoHidraulica(false);
+		cp1.setUsuario(usuarioService.obterUm(1l));
 		System.out.println(cp1);
 		carroService.salvar(cp1);
 		
@@ -42,6 +47,7 @@ public class CarroTeste implements ApplicationRunner {
 		cp2.setValor(200);
 		cp2.setDirecaoHidraulica(true);
 		cp2.setMotor("230 cv");
+		cp2.setUsuario(usuarioService.obterUm(1l));
 		System.out.println(cp2);
 		carroService.salvar(cp2);
 		
@@ -54,6 +60,7 @@ public class CarroTeste implements ApplicationRunner {
 		cp3.setValor(100);
 		cp3.setDirecaoHidraulica(true);
 		cp3.setMotor("106 cv");
+		cp3.setUsuario(usuarioService.obterUm(2l));
 		System.out.println(cp3);
 		carroService.salvar(cp3);
 		

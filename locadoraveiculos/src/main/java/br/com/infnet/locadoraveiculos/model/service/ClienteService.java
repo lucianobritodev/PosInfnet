@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.infnet.locadoraveiculos.model.domain.Cliente;
+import br.com.infnet.locadoraveiculos.model.domain.Usuario;
 import br.com.infnet.locadoraveiculos.model.repository.ClienteRepository;
 import br.com.infnet.locadoraveiculos.model.service.exception.IdentifierCanNotBeEmptyNullOrZeroException;
 import br.com.infnet.locadoraveiculos.model.service.exception.ResourceNotFoundException;
@@ -21,7 +22,12 @@ public class ClienteService {
 	public List<Cliente> obterTodos() {
 		return clienteRepository.findAll();
 	}
-
+	
+	@Transactional(readOnly = true)
+	public List<Cliente> obterTodosPorUsuario(Usuario usuario) {
+		return clienteRepository.findAllByUserId(usuario.getId());
+	}
+	
 	@Transactional(readOnly = true)
 	public Cliente obterUmId(final Long id) throws ResourceNotFoundException, IdentifierCanNotBeEmptyNullOrZeroException {
 		if(id == null || id == 0) throw new IdentifierCanNotBeEmptyNullOrZeroException("Identificador não pode ser zero ou nulo!");

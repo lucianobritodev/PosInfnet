@@ -1,5 +1,7 @@
 package br.com.infnet.locadoraveiculos.model.domain;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -8,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import br.com.infnet.locadoraveiculos.model.domain.enuns.Combustivel;
@@ -28,8 +33,15 @@ public abstract class Veiculo {
 	private Combustivel combustivel;
 	private String motor;
 	
-	public Veiculo() {}
+	@ManyToMany(mappedBy = "veiculos")
+	private List<Reserva> reservas;
 	
+	@ManyToOne
+	@JoinColumn(name = "id_usuario")
+	private Usuario usuario;
+	
+	public Veiculo() {}
+
 	public Long getId() {
 		return id;
 	}
@@ -49,26 +61,26 @@ public abstract class Veiculo {
 	public float getValor() {
 		return valor;
 	}
-	
+
 	public void setValor(float valor) {
 		this.valor = valor;
 	}
-	
+
 	public int getCodigoChassi() {
 		return codigoChassi;
 	}
-	
+
 	public void setCodigoChassi(int codigoChassi) {
 		this.codigoChassi = codigoChassi;
 	}
-	
+
 	public String getCor() {
 		return cor;
 	}
-	
+
 	public void setCor(String cor) {
 		this.cor = cor;
-	}	
+	}
 
 	public Combustivel getCombustivel() {
 		return combustivel;
@@ -84,6 +96,22 @@ public abstract class Veiculo {
 
 	public void setMotor(String motor) {
 		this.motor = motor;
+	}
+
+	public List<Reserva> getReservas() {
+		return reservas;
+	}
+
+	public void setReservas(List<Reserva> reservas) {
+		this.reservas = reservas;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	@Override

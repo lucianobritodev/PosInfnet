@@ -54,12 +54,8 @@ public class TratorController {
 		boolean incluir = trator.getId() == null ? true : false;
 		trator = tratorService.salvar(trator);
 		
-		if(incluir) {			
-			model.addAttribute("msgSuccess", "Trator "+ trator.getId() +" incluido com sucesso!");
-		} else {
-			model.addAttribute("msgSuccess", "Trator "+ trator.getId() +" alterado com sucesso!");
-		}
-		
+		String mensagem = incluir ? "Trator "+ trator.getId() +" incluido com sucesso!" : "Trator "+ trator.getId() +" alterado com sucesso!";
+		model.addAttribute("msgSuccess", mensagem);
 		return this.telaLista(model);
 	}
 	
