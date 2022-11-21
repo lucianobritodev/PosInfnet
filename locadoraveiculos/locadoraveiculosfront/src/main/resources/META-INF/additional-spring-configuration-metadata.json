@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "api.usario.name",
+    "type": "java.lang.String",
+    "description": "A description for 'api.usario.name'"
+  },
+  {
+    "name": "api.usario.host",
+    "type": "java.lang.String",
+    "description": "A description for 'api.usario.host'"
+  },
+  {
+    "name": "api.usario.path",
+    "type": "java.lang.String",
+    "description": "A description for 'api.usario.path'"
+  }
+]}
