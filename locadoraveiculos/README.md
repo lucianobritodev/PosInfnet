@@ -30,7 +30,12 @@ Senha:  123
 
 ```
 
-## Execução Aplicação Monolítica e Frontend
+## Execução Aplicação Monolítica
+
+apiusuario host: localhost:9090
+
+
+## Execução Aplicação Frontend
 
 apiusuario host: localhost:8080
 
