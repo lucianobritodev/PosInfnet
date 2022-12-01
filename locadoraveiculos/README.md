@@ -30,14 +30,19 @@ Senha:  123
 
 ```
 
-## Execução Aplicação Monolítica e Frontend
+## Execução Aplicação Monolítica
+
+apiusuario host: localhost:9090
+
+
+## Execução Aplicação Frontend
 
 apiusuario host: localhost:8080
 
 
 ## Execução API Usuario
 
-apiusuario host: localhost:8081
+apiusuario host: localhost:8081<br>
 path padrão: /apiusuario
 
 Obter todos:
@@ -52,7 +57,7 @@ GET localhost:8081/apiusuario/usuario/{id}
 
 Vadidar Usuario:
 ```
-GET localhost:8081/apiusuario/usuario?email=professor@email.com&senha=123 
+POST localhost:8081/apiusuario/usuario?email=professor@email.com&senha=123 
 ```
 
 Inserir Usuario:
