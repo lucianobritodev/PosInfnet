@@ -34,7 +34,7 @@ public class TratorTeste implements ApplicationRunner {
 		t1.setTipoTrator(TipoTrator.FLORESTAL);
 		t1.setValor(650);
 		t1.setMotor("390 cv");
-		t1.setUsuario(usuarioService.obterUm(1l));
+		t1.setUsuario(usuarioService.obterUmPorId(1l));
 		System.out.println(t1);
 		tratorService.salvar(t1);
 		
@@ -46,7 +46,7 @@ public class TratorTeste implements ApplicationRunner {
 		t2.setTipoTrator(TipoTrator.ESTEIRA);
 		t2.setValor(1000);
 		t2.setMotor("440 cv");
-		t2.setUsuario(usuarioService.obterUm(2l));
+		t2.setUsuario(usuarioService.obterUmPorId(2l));
 		System.out.println(t2);
 		tratorService.salvar(t2);
 		
@@ -58,7 +58,7 @@ public class TratorTeste implements ApplicationRunner {
 		t3.setTipoTrator(TipoTrator.AGRICOLA);
 		t3.setValor(1300);
 		t3.setMotor("410 cv");
-		t3.setUsuario(usuarioService.obterUm(2l));
+		t3.setUsuario(usuarioService.obterUmPorId(2l));
 		System.out.println(t3);
 		tratorService.salvar(t3);
 		

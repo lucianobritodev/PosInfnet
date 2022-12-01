@@ -5,11 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.infnet.locadoraveiculos.model.domain.Endereco;
@@ -36,8 +32,20 @@ public class UsuarioController {
 	
 
 	@PostMapping(value = "/cep")
-	public ModelAndView obterCep(@ModelAttribute("usuario") Usuario usuario, Model model) {	
-		usuario.setEndereco(usuarioService.obterEnderecoPorCep(usuario.getEndereco().getCepPesquisa()));
+	public ModelAndView obterCep(@RequestParam(value = "idUsuario", required = false) Long idUsuario, @ModelAttribute("usuario") Usuario usuario, Model model) {
+		String cep = usuario.getEndereco().getCepPesquisa();
+
+		if(idUsuario != null) {
+			usuario = usuarioService.obterUmPorId(idUsuario);
+		}
+
+		Endereco endereco = usuarioService.obterEnderecoPorCep(cep);
+
+		if(usuario.getEndereco() != null && usuario.getEndereco().getId() != null) {
+			endereco.setId(usuario.getEndereco().getId());
+		}
+
+		usuario.setEndereco(endereco);
 		model.addAttribute("usuario", usuario);
 		return new ModelAndView("/usuario/cadastrar");
 	}
@@ -50,7 +58,7 @@ public class UsuarioController {
 	
 	@GetMapping(value = "/{id}/editar")
 	public ModelAndView telaEditar(Model model, @PathVariable("id") Long id) {
-		model.addAttribute("usuario", usuarioService.obterUm(id));
+		model.addAttribute("usuario", usuarioService.obterUmPorId(id));
 		return new ModelAndView("/usuario/cadastrar");
 	}
 

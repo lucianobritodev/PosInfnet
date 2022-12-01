@@ -19,22 +19,23 @@
 	
 	<div class="container col-sm-8 col-offset-2 border border-secondary rounded p-4 mt-4 mb-4">
 		<h1 class="mt-4 mb-4">Cadastro de Usuário</h1>
-		<form:form action="/usuario/cep" method="post" modelAttribute="usuario">
+		<form:form action="/usuario/cep?idUsuario=${usuario.id}" method="post" modelAttribute="usuario">
 			<div class="row align-items-center mb-4">		
 			    <label for="cep" class="form-label">Busca por CEP:</label>
 			    <div class="col-auto">
-			      <form:input type="text" 
-			      		 id="cep"
-			      		 class="form-control"
-			      		 maxlength="8"
-			      		 pattern="[0-9]{8}$"
+			      <form:input type="text"
+			      		 id="busca-cep"
+						 class="form-control"
+						 maxlength="9"
+			      		 pattern="[0-9]{8,9}$"
 			      		 title="Somente 8 digitos numericos!"
 			      		 placeholder="Busque endereço pelo CEP"
+						 onkeyup="enableSearchButton()"
 			      		 path="endereco.cepPesquisa" />
 			    </div>
 			    
 			    <div class="col-auto">			     
-					<button type="submit" class="btn btn-primary"><i class="bi bi-search"></i>&nbsp;Buscar</button>
+					<button type="submit" id="btn-busca-cep" class="btn btn-primary" disabled="true" ><i class="bi bi-search"></i>&nbsp;Buscar</button>
 			    </div>
 			</div>
 		</form:form>
@@ -63,7 +64,9 @@
 				    </div>
 				  </div>
 			  </div>
-			  
+			  <div class="form-group mb-4">
+				  <form:input type="hidden" id="id-endereco" class="form-control" path="endereco.id" readonly="true" />
+			  </div>
 			  <jsp:include page="../endereco/endereco.jsp" />
 		
 			  <div class="row mb-4">
@@ -81,6 +84,7 @@
 	
 	<tags:scripts />
 	<script type="text/javascript">
+		var btnBuscaCep = document.getElementById("btn-busca-cep");
 		var idField = document.getElementById("id");
 		var icon = document.getElementById("iconPasswordField");
 		var passwordField = document.getElementById("password");
@@ -103,6 +107,15 @@
 				passwordField.focus();
 			}
 			
+		}
+
+		function enableSearchButton() {
+			var buscaCepField = document.getElementById("busca-cep");
+			if(buscaCepField.value.length >=8 ) {
+				btnBuscaCep.removeAttribute("disabled");
+			} else {
+				btnBuscaCep.setAttribute("disabled", true);
+			}
 		}
 	</script>
 </body>

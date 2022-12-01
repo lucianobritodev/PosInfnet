@@ -1,24 +1,11 @@
 package br.com.infnet.locadoraveiculos.model.domain;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
+import br.com.infnet.locadoraveiculos.model.domain.enuns.StatusReserva;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import br.com.infnet.locadoraveiculos.model.domain.enuns.StatusReserva;
+import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_reserva")
@@ -33,12 +20,15 @@ public class Reserva {
 	@Enumerated(EnumType.ORDINAL)
 	private StatusReserva status;
 	private String descricao;
+
+	@Transient
+	private List<Veiculo> listaVeiculos;
 	
-	@OneToOne(cascade = CascadeType.DETACH)
+	@OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_cliente")
 	private Cliente cliente;
 	
-	@ManyToMany(cascade = CascadeType.DETACH)
+	@ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
 	private List<Veiculo> veiculos;
 	
 	@ManyToOne
@@ -116,6 +106,14 @@ public class Reserva {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public List<Veiculo> getListaVeiculos() {
+		return listaVeiculos;
+	}
+
+	public void setListaVeiculos(List<Veiculo> listaVeiculos) {
+		this.listaVeiculos = listaVeiculos;
 	}
 
 	public float getTotalReserva() {

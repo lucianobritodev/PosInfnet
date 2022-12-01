@@ -3,6 +3,8 @@ package br.com.infnet.locadoraveiculos.controllers;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import br.com.infnet.locadoraveiculos.model.service.ClienteService;
+import br.com.infnet.locadoraveiculos.model.service.VeiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +28,11 @@ public class ReservaController {
 
 	@Autowired
 	private ReservaService reservaService;
-	
+	@Autowired
+	private VeiculoService veiculoService;
+	@Autowired
+	private ClienteService clienteService;
+
 	@GetMapping("/")
 	public String redirectTelaLista() {
 		return "redirect:/reserva/listar";
@@ -48,6 +54,8 @@ public class ReservaController {
 	public ModelAndView telaCadastro(Model model) {
 		model.addAttribute("reserva", new Reserva());
 		model.addAttribute("statusList", StatusReserva.values());
+		model.addAttribute("veiculoLista", veiculoService.obterTodos());
+		model.addAttribute("clienteLista", clienteService.obterTodos());
 		return new ModelAndView("/reserva/cadastrar");
 	}
 	
@@ -58,12 +66,15 @@ public class ReservaController {
 		model.addAttribute("reserva", reserva);
 		model.addAttribute("data", dtf.format(reserva.getDataReserva()));
 		model.addAttribute("statusList", StatusReserva.values());
+		model.addAttribute("veiculoLista", reserva.getVeiculos());
+		model.addAttribute("clienteLista", reserva.getCliente());
 		return new ModelAndView("/reserva/cadastrar");
 	}
 
 	@PostMapping(value = "/salvar")
 	public ModelAndView salvar(Model model, @ModelAttribute("reserva") Reserva reserva, @SessionAttribute("user") Usuario usuario) {
 		boolean incluir = reserva.getId() == null ? true : false;
+		reserva.setUsuario(usuario);
 		reserva = reservaService.salvar(reserva);
 
 		String mensagem = incluir ? "Reserva "+ reserva.getId() +" incluido com sucesso!" : "Reserva "+ reserva.getId() +" alterado com sucesso!";

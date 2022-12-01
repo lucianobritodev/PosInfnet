@@ -33,7 +33,7 @@ public class CarretaTeste implements ApplicationRunner{
 		c1.setCombustivel(Combustivel.DIESEL);
 		c1.setValor(300.0f);
 		c1.setMotor("750 cv");
-		c1.setUsuario(usuarioService.obterUm(2l));
+		c1.setUsuario(usuarioService.obterUmPorId(2l));
 		System.out.println(c1);
 		carretaService.salvar(c1);
 		
@@ -45,7 +45,7 @@ public class CarretaTeste implements ApplicationRunner{
 		c2.setCombustivel(Combustivel.DIESEL);
 		c2.setValor(700.0f);
 		c2.setMotor("830 cv");
-		c2.setUsuario(usuarioService.obterUm(2l));
+		c2.setUsuario(usuarioService.obterUmPorId(2l));
 		System.out.println(c2);
 		carretaService.salvar(c2);
 		
@@ -57,7 +57,7 @@ public class CarretaTeste implements ApplicationRunner{
 		c3.setCombustivel(Combustivel.GAS_NATURAL);
 		c3.setValor(900.0f);
 		c3.setMotor("710 cv");
-		c3.setUsuario(usuarioService.obterUm(2l));
+		c3.setUsuario(usuarioService.obterUmPorId(2l));
 		System.out.println(c3);
 		carretaService.salvar(c3);
 		

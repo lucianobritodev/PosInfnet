@@ -26,15 +26,10 @@
 	<div
 		class="container col-sm-8 col-offset-2 border border-secondary rounded p-4 mt-4 mb-4">
 		<h1 class="mt-4 mb-4">Cadastro de Reserva</h1>
-		<form:form action="/reserva/salvar" method="post"
-			modelAttribute="reserva">
+		<form:form action="/reserva/salvar" method="post" modelAttribute="reserva">
 			<div class="row mb-4">
 				<div class="form-group mb-4">
 					<form:input type="hidden" id="id" class="form-control" path="id"
-						readonly="true" />
-				</div>
-				<div class="form-group mb-4">
-					<form:input type="hidden" id="user" class="form-control" value="${ user }" path="usuario"
 						readonly="true" />
 				</div>
 				<div class="form-group col-sm-4">
@@ -63,54 +58,43 @@
 
 			<div class="row">
 			    <div class="col-sm-12 mb-4">
-				    <div class="form-group">
-					  <label for="lista-funcoes" class="form-label">Veiculos</label>
-					  <div class="input-group mb-2 col-sm-12">
-					    <!-- <input list="veiculos" type="text"  id="input-veiculo" class="form-control form-select" placeholder="Escolha o(s) veículo(s)" style="cursor:default" onchange="habilitaBotaoAdicionar()" /> -->
-						<select  id="input-veiculo" class="form-control form-select" onchange="habilitaBotaoAdicionar()">
-						  <option value="P1">Pastor Local</option>
-						  <option>Teste</option>
-						  <option>Discipulador</option>
-						  <option>Líder de Célula</option>
-						  <option>Líder de Célula em Teinamento</option>
-						  <option>Líder de Louvor</option>
-						  <option>Anfitrião de Célula</option>
-						  <option>Administrador de Sistemas</option>
-						  <option>Músico Intrumentista</option>
-						  <option>Músico Vocal</option>
-						  <option>Tesoureiro</option>
-						  <option>Secretário(a)</option>
-						  <option>Sonoplasta</option>
-						  <option>Projetista</option>
-						</select>
-					    
-					    <button class="btn btn-outline-secondary rounded-end" id="btnAdicionarVeiculo" type="button" onclick="adicionarVeiculo()" disabled><i class="bi bi-plus-lg"></i> Adicionar</button>
-					    
-<!-- 						<datalist  id="veiculos">
-						  <option">Pastor Local</option>
-						  <option>Teste</option>
-						  <option>Discipulador</option>
-						  <option>Líder de Célula</option>
-						  <option>Líder de Célula em Teinamento</option>
-						  <option>Líder de Louvor</option>
-						  <option>Anfitrião de Célula</option>
-						  <option>Administrador de Sistemas</option>
-						  <option>Músico Intrumentista</option>
-						  <option>Músico Vocal</option>
-						  <option>Tesoureiro</option>
-						  <option>Secretário(a)</option>
-						  <option>Sonoplasta</option>
-						  <option>Projetista</option>
-						</datalist> -->
-					  
-					  </div>
-					  <div class="mb-2 col-sm-12">
-						<select class="form-control" id="lista-funcoes-area" readonly style="min-height:10em"></select>
-					  </div>
-					  <div class="d-grid gap-2 d-flex justify-content-md-end">
-					    <button class="btn btn-secondary me-md-2" type="button" id="limpar-funcoes">Limpar</button>
-					  </div>
+					<div class="form-group mb-4">
+						<label for="select-cliente" class="form-label">Cliente</label>
+						<form:select  id="select-cliente" class="form-select form-control" path="cliente">
+							<form:option value="">Selecione</form:option>
+							<c:forEach var="clienteItem" items="${ clienteLista }">
+								<form:option value="${ clienteItem.id }">${clienteItem.nome}</form:option>
+							</c:forEach>
+						</form:select>
+					</div>
+				    <div class="form-group mb-4">
+					  	<label for="input-veiculo" class="form-label">Veiculos</label>
+						<div class="d-flex flex-column">
+							<div class="">
+								<form:select  id="input-veiculo" class="form-select form-control" onchange="habilitaBotaoAdicionar()" path="listaVeiculos">
+									<form:option value="">Selecione</form:option>
+									<c:forEach var="veiculoItem" items="${ veiculoLista }">
+										<form:option value="${ veiculoItem.id }">${veiculoItem.nome}</form:option>
+									</c:forEach>
+								</form:select>
+							</div>
+							<div class="ms-auto">
+								<button class="btn btn-outline-secondary rounded-end" id="btn-adicionar-veiculo" type="button" onclick="adicionarVeiculo()" disabled><i class="bi bi-plus-lg"></i> Adicionar</button>
+							</div>
+						</div>
 				  	</div>
+					<div class="form-group">
+						<div class="mb-2 col-sm-12">
+							<form:select class="form-control" id="slct-lista-veiculos" readonly="true" multiple="true" style="min-height:10em" path="veiculos">
+								<c:forEach var="vItem" items="${ veiculos }">
+									<form:option value="${ vItem.id }">${vItem.nome}</form:option>
+								</c:forEach>
+							</form:select>
+						</div>
+						<div class="d-grid gap-2 d-flex justify-content-md-end">
+							<button class="btn btn-secondary me-md-2" type="button" id="limpar-funcoes">Limpar</button>
+						</div>
+					</div>
 				</div>				  
 			</div>
 
@@ -143,7 +127,7 @@
 	<script type="text/javascript">
 	
 		function habilitaBotaoAdicionar() {
-			$("#btnAdicionarVeiculo").attr("disabled", false);
+			$("#btn-adicionar-veiculo").attr("disabled", false);
 		}
 	
 		function adicionarVeiculo() {
@@ -151,11 +135,12 @@
 			var inputFieldVeiculo = $("#input-veiculo");
 			console.log(inputFieldVeiculoVal);
 			console.log(inputFieldVeiculo);
-			$("#input-veiculo").find("option").each(function() {
-				if(this.selected) {					
-					console.log(this);
-				}
-			});
+			var text = $("#input-veiculo").find(":selected").text();
+			var value = $("#input-veiculo").find(":selected").val();
+
+			var option = '<option value="'+value+'" selected>'+text+'</option>';
+
+			$("#slct-lista-veiculos").append(option);
 		}	  	
 	</script>
 </body>

@@ -38,10 +38,10 @@ public class ReservaTeste implements ApplicationRunner {
 	public void run(ApplicationArguments args) throws Exception {
 		System.out.println("## Reserva ##");
 		
-		Usuario u1 = usuarioService.obterUm(1l);
+		Usuario u1 = usuarioService.obterUmPorId(1l);
 		List<Veiculo> v1 = veiculoService.obterTodosPorUsuario(u1);
 		
-		Usuario u2 = usuarioService.obterUm(1l);
+		Usuario u2 = usuarioService.obterUmPorId(1l);
 		List<Veiculo> v2 = veiculoService.obterTodosPorUsuario(u2);
 		
 		Cliente c1 = clienteService.obterUmId(1l);

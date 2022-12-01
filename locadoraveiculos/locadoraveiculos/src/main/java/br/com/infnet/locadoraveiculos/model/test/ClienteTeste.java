@@ -26,8 +26,8 @@ public class ClienteTeste implements ApplicationRunner  {
 	public void run(ApplicationArguments args) throws Exception {
 		System.out.println("## Cadastro de Clientes ##");
 		
-		Usuario usr1 = usuarioService.obterUm(1l);
-		Usuario usr2 = usuarioService.obterUm(2l);
+		Usuario usr1 = usuarioService.obterUmPorId(1l);
+		Usuario usr2 = usuarioService.obterUmPorId(2l);
 		
 		Cliente c1 = new Cliente();
 		c1.setCpf("001.025.356-01");

@@ -22,10 +22,10 @@ public interface IUsuarioClient {
 	public List<Usuario> obterTodos();
 	
 	@PostMapping("/validar")
-	public Usuario validar(@RequestParam("email") String email, @RequestParam("senha") String senha) ;
+	public Usuario validar(@RequestParam("email") String email, @RequestParam("senha") String senha);
 	
 	@GetMapping("/{id}")
-	public  Usuario obterUmPorId(@PathVariable("id") Long id);
+	public Usuario obterUmPorId(@PathVariable("id") Long id);
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)

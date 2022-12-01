@@ -32,7 +32,7 @@ public class UsuarioService {
 	}
 
 	@Transactional(readOnly = true)
-	public Usuario obterUm(final Long id) throws ResourceNotFoundException, IdentifierCanNotBeEmptyNullOrZeroException {
+	public Usuario obterUmPorId(final Long id) throws ResourceNotFoundException, IdentifierCanNotBeEmptyNullOrZeroException {
 		if(id == null || id == 0) throw new IdentifierCanNotBeEmptyNullOrZeroException("Identificador não pode ser zero ou nulo!");
 		return usuarioRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Cliente com identificador " + id + " não encontrado!"));
@@ -59,7 +59,7 @@ public class UsuarioService {
 	@Transactional
 	public void excluir(final Long id) {
 		try {			
-			this.obterUm(id);
+			this.obterUmPorId(id);
 			usuarioRepository.deleteById(id);
 		} catch (ResourceNotFoundException | IdentifierCanNotBeEmptyNullOrZeroException e) {
 			e.printStackTrace();

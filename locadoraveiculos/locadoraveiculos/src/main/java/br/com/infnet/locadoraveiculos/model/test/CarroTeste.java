@@ -34,7 +34,7 @@ public class CarroTeste implements ApplicationRunner {
 		cp1.setValor(100);
 		cp1.setMotor("77 cv");
 		cp1.setDirecaoHidraulica(false);
-		cp1.setUsuario(usuarioService.obterUm(1l));
+		cp1.setUsuario(usuarioService.obterUmPorId(1l));
 		System.out.println(cp1);
 		carroService.salvar(cp1);
 		
@@ -47,7 +47,7 @@ public class CarroTeste implements ApplicationRunner {
 		cp2.setValor(200);
 		cp2.setDirecaoHidraulica(true);
 		cp2.setMotor("230 cv");
-		cp2.setUsuario(usuarioService.obterUm(1l));
+		cp2.setUsuario(usuarioService.obterUmPorId(1l));
 		System.out.println(cp2);
 		carroService.salvar(cp2);
 		
@@ -60,7 +60,7 @@ public class CarroTeste implements ApplicationRunner {
 		cp3.setValor(100);
 		cp3.setDirecaoHidraulica(true);
 		cp3.setMotor("106 cv");
-		cp3.setUsuario(usuarioService.obterUm(2l));
+		cp3.setUsuario(usuarioService.obterUmPorId(2l));
 		System.out.println(cp3);
 		carroService.salvar(cp3);
 		
