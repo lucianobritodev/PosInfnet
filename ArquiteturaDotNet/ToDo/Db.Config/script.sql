@@ -23,11 +23,11 @@
 
 -- Rode a linha abaixo primeiro
 create database ToDoDb;
-
+go
 
 -- Rode a linha abaixo em segundo
 use ToDoDb;
-
+go
 
 -- Rode a linha abaixo para criar tabela
 create table Items(
@@ -36,7 +36,7 @@ create table Items(
 	Done bit not null,
 	CreatedAt Datetime not null
 );
-
+go
 
 -- =================== Inserindo registros iniciais ============================
 -- Rode as duas linhas abaixo
@@ -45,6 +45,6 @@ insert into Items values ('28a32095-6363-4b65-8668-a9035e6ef7a1', 'Aprender prin
 insert into Items values ('bfd6863f-a82d-48fb-bca6-7e90d4f6921a', 'Aprender NodeJS com Express', 0, GetDate());
 insert into Items values ('bc890193-3790-4d2d-9b56-83bd21143361', 'Aprender Java com Spring', 0, GetDate());
 insert into Items values ('b50f03ea7-d189-4dd8-b949-f9c3c4c6b929', 'Aprender Java com Quarkus', 0, GetDate());
-
+go
 
 
