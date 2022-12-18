@@ -3,8 +3,6 @@ package br.com.infnet.locadoraveiculos.controllers;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import br.com.infnet.locadoraveiculos.model.service.ClienteService;
-import br.com.infnet.locadoraveiculos.model.service.VeiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.infnet.locadoraveiculos.model.domain.Reserva;
-import br.com.infnet.locadoraveiculos.model.domain.Usuario;
-import br.com.infnet.locadoraveiculos.model.domain.enuns.StatusReserva;
-import br.com.infnet.locadoraveiculos.model.service.ReservaService;
+import br.com.infnet.locadoraveiculos.domain.entities.Reserva;
+import br.com.infnet.locadoraveiculos.domain.entities.Usuario;
+import br.com.infnet.locadoraveiculos.domain.entities.enuns.StatusReserva;
+import br.com.infnet.locadoraveiculos.domain.service.ClienteService;
+import br.com.infnet.locadoraveiculos.domain.service.ReservaService;
+import br.com.infnet.locadoraveiculos.domain.service.VeiculoService;
 import br.com.infnet.locadoraveiculos.utilities.Utility;
 
 @Controller

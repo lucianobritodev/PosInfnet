@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.infnet.locadoraveiculos.model.domain.Usuario;
-import br.com.infnet.locadoraveiculos.model.service.UsuarioService;
+import br.com.infnet.locadoraveiculos.domain.entities.Usuario;
+import br.com.infnet.locadoraveiculos.domain.service.UsuarioService;
 import br.com.infnet.locadoraveiculos.utilities.Utility;
 
 @Controller

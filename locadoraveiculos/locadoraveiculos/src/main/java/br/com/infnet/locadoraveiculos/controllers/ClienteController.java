@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.infnet.locadoraveiculos.model.domain.Cliente;
-import br.com.infnet.locadoraveiculos.model.domain.Usuario;
-import br.com.infnet.locadoraveiculos.model.service.ClienteService;
+import br.com.infnet.locadoraveiculos.domain.entities.Cliente;
+import br.com.infnet.locadoraveiculos.domain.entities.Usuario;
+import br.com.infnet.locadoraveiculos.domain.service.ClienteService;
 
 @Controller
 @RequestMapping("/cliente")

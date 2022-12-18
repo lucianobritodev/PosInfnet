@@ -8,9 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.infnet.locadoraveiculos.model.domain.Endereco;
-import br.com.infnet.locadoraveiculos.model.domain.Usuario;
-import br.com.infnet.locadoraveiculos.model.service.UsuarioService;
+import br.com.infnet.locadoraveiculos.domain.entities.Endereco;
+import br.com.infnet.locadoraveiculos.domain.entities.Usuario;
+import br.com.infnet.locadoraveiculos.domain.service.UsuarioService;
 
 @Controller
 @RequestMapping("/usuario")

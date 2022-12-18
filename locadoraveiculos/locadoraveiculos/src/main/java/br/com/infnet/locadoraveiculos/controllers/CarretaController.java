@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.infnet.locadoraveiculos.model.domain.Carreta;
-import br.com.infnet.locadoraveiculos.model.domain.enuns.Combustivel;
-import br.com.infnet.locadoraveiculos.model.service.CarretaService;
+import br.com.infnet.locadoraveiculos.domain.entities.Carreta;
+import br.com.infnet.locadoraveiculos.domain.entities.enuns.Combustivel;
+import br.com.infnet.locadoraveiculos.domain.service.CarretaService;
 
 @Controller
 @RequestMapping("/carreta")
